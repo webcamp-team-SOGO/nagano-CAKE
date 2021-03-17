@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   sessions: 'admins/sessions'
   }
 
-  scope module: :admins do
+  namespace :admins do
     resources :customers, only: [:index, :edit, :update, :show]
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
@@ -16,13 +16,13 @@ Rails.application.routes.draw do
   end
 
   devise_for :customers, skip: :all
-  devise_scope :user do
-    get 'users/sign_in' => 'public/sessions#new', as: 'new_user_session'
-    post 'users/sign_in' => 'public/sessions#create', as: 'user_session'
-    delete 'users/sign_out' => 'public/sessions#destroy', as: 'destroy_user_session'
-    get 'users/sign_up' => 'public/registrations#new', as: 'new_user_registration'
-    post 'users' => 'public/registrations#create', as: 'user_registration'
-    get 'users/password/new' => 'public/passwords#new', as: 'new_user_password'
+  devise_scope :customer do
+    get 'customers/sign_in' => 'public/sessions#new', as: 'new_customer_session'
+    post 'customers/sign_in' => 'public/sessions#create', as: 'customer_session'
+    delete 'customers/sign_out' => 'public/sessions#destroy', as: 'destroy_customer_session'
+    get 'customers/sign_up' => 'public/registrations#new', as: 'new_customer_registration'
+    post 'customers' => 'public/registrations#create', as: 'customer_registration'
+    get 'customers/password/new' => 'public/passwords#new', as: 'new_customer_password'
   end
 
   scope module: :public do
