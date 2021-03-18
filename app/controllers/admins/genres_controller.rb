@@ -2,7 +2,7 @@ class Admins::GenresController < ApplicationController
 
   def index
     @genres = Genre.all
-    
+    @genre = Genre.new
   end
 
   def create
@@ -17,12 +17,16 @@ class Admins::GenresController < ApplicationController
 
   def update
     @genre = Genre.find(params[:id])
-    @genre.update(genre_params)
+    if @genre.update(genre_params)
+      redirect_to admins_genres_path, notice: "あめでとう、やったね！！"
+    else
+      render "edit"
+    end
   end
 
 private
   def genre_params
-    params[:genre].permit(:name)
+    params.require(:genre).permit(:name)
   end
 
 end

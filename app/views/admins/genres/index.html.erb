@@ -1,13 +1,13 @@
 <h1 class="bg-light">
   ジャンル一覧・追加
 </h1>
+<%= render 'layouts/errors', obj: @genre %>
 
-
-<%= form_with model: @genre, local:true do |f| %>
+ <%= form_with model: @genre, url: admins_genres_path, local:true do |f| %>
 　<%= f.label :ジャンル名 %>
   <%= f.text_field :name, class: "form-control, placeholder=ジャンル名" %>
   <%= f.submit "新規登録" ,class: 'btn btn-sm btn-success' %>
-<% end %>
+ <% end %>
 
 
 <table class="table">
@@ -26,6 +26,5 @@
     <% end %>
   </tbody>
 </table>
-
 
 
