@@ -1,6 +1,6 @@
   <header>
     <nav>
-      <%= image_tag('img/logo1.png', class: 'logo-image') %>
+      <%= image_tag('img/logo2.jpg', class: 'logo-image') %>
       <ul>
         <% if customer_signed_in? %>
           <li><%= link_to "マイページ", customers_path %></li>
@@ -19,7 +19,7 @@
           <!--リンクは適当-->
           <li><%= link_to "ジャンル一覧", admins_genres_path %></li>
           <!--リンクは適当-->
-          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path %></li>
         <% else %>
           <li><%= link_to "About", about_path %></li>
           <li><%= link_to "商品一覧", items_path %></li>
