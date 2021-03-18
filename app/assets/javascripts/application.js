@@ -13,10 +13,8 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-<<<<<<< HEAD
 
-=======
->>>>>>> 62d57c5ca8f6cb0d65439120189ebe15b03b79f2
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
