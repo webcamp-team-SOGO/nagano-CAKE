@@ -20,7 +20,7 @@ end
   private
 
   def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up,keys:[:email, :name])
+      devise_parameter_sanitizer.permit(:sign_up,keys:[:last_name, :first_name, :k_first_name, :k_last_name, :postal_code, :address, :telephone_number])
   end
 
 end
