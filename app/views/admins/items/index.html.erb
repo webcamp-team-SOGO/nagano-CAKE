@@ -16,19 +16,23 @@
           <tr>
             <td><%= item.id %></td>
             <td><%= link_to admins_item_path(item.id) do %>
-                  <%= item.name %>
+                <%= item.name %>
                 <% end %>
             </td>
             <td><%= item.taxfree %></td>
-            <td><%= item.genre_id %></td>
-            <td><%= item.is_valid %></td>
+            <td><%= item.genre.name %></td>
+            <td><% if item.is_valid == true %>
+                <div class="text-success">販売中</div>
+           　　   <% else %>
+           　　   <div class="text-secondary">販売停止中</div>
+           　    <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <div class="text-center">
-    　　<%#= paginate @item_k %>
-   　　 <!--まだ反映されていません-->
+    　　<%= paginate @items %>
     </div>
   </div>
 </div>
