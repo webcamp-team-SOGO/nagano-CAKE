@@ -3,7 +3,6 @@ class Admins::ItemsController < ApplicationController
   def new
     @item = Item.new
     @items = Item.all
-    @genres = Genre.all
   end
 
   def index
@@ -13,6 +12,7 @@ class Admins::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def create
@@ -20,7 +20,7 @@ class Admins::ItemsController < ApplicationController
     if @item.save
       redirect_to admins_item_path(@item)
     else
-      render "index"
+      render "new"
     end
   end
 

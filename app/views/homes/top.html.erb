@@ -9,7 +9,7 @@
     <table>
         <tr>
             <% @items.each do |item| %>
-            <td><%= attachment_image_tag item, :image_id, :fill, 100, 100, format: 'jpeg', fallback: "img/no_image.jpg" %></td>
+            <td><%#= attachment_image_tag item, :image_id, :fill, 100, 100, format: 'jpeg', fallback: "img/no_image.jpg" %></td>
             <td><%= item.name %></td>
             <td>¥<%= item.taxfree %></td>
             <% end %>

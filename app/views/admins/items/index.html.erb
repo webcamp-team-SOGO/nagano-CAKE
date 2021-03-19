@@ -20,14 +20,14 @@
                 <% end %>
             </td>
             <td><%= item.taxfree %></td>
-            <td><%= item.genre %></td>
+            <td><%= item.genre_id %></td>
             <td><%= item.is_valid %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <div class="text-center">
-    　　<%= paginate @item_k %>
+    　　<%#= paginate @item_k %>
    　　 <!--まだ反映されていません-->
     </div>
   </div>

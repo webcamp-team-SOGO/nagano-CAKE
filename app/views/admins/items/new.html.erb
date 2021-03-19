@@ -1,8 +1,8 @@
 <div class='row'>
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h3 class="bg-light">商品新規登録</h3>
-    <%#= render 'layouts/errors', obj: @items %>
-      <%= form_with model: @item, url: admins_items_path, local:true do |f| %>
+    <%= render 'layouts/errors', obj: @item %>
+      <%= form_with model: @item, url: admins_items_path, method: :post, local:true do |f| %>
       <div class="form-inline">
         <label class="col-sm-4">商品画像</label>
         <div class="col-sm-8 form-inline">
@@ -25,7 +25,7 @@
       <div class="form-inline">
         <label class="col-sm-4">ジャンル</label>
         <div class="col-sm-8 form-inline">
-          <%#= f.collection_select (:genre_id, @genres, :id, :name, {include_blank: true}) %>
+          <%#= f.collection_select (:genre, @genres, :id, :name, {include_blank: true}) %>
         </div>
       </div><br>
       <div class="form-inline">
@@ -37,12 +37,10 @@
       <div class="form-inline">
         <label class="col-sm-4">販売ステータス</label>
         <div class="col-sm-8 form-inline">
-          <%= form_with model: @item, url: admins_items_path, local: true do |from| %>
             <%= f.radio_button :is_valid, :male %>
             <%= f.label :is_valid, "販売中", {value: :male, style: "display: inline-block;"} %>
             <%= f.radio_button :is_valid, :female %>
             <%= f.label :is_valid, "販売停止中", {value: :female, style: "display: inline-block;"} %>
-          <% end %>
         </div>
       </div><br>
       <div class="text-center">

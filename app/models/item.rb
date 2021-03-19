@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  belongs_to :admin
+  belongs_to :genre
   
   attachment :image
   validates :name, presence: true ,length: {minimum: 2,maximum: 30}
