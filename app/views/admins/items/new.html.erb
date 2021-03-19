@@ -1,25 +1,52 @@
-<h2>商品新規登録</h2>
-<%= form_with model: @item, local:true do |f| %>
-<div>
-  <br><h5>商品画像</h5>
-    <%= f.file_field :image %>
-    <!--bootstrapを書き込んでから修正する-->
-  <h5>商品名</h5>
-    <%= f.text_field :name %>
-  <h5>商品説明</h5>
-    <%= f.text_area :introduction %>
-  <h5>ジャンル</h5>
-    <%= f.select :name, [['ケーキ'], ['焼き菓子'], ['プリン']] %>  
-  <h5>税抜き価格</h5>
-    <%= f.text_field :taxfree %>
-  <h5>販売ステータス</h5>
-    <%= form_with model: @item, local: true do |from| %>
-    <%= f.radio_button :is_varid, :male %>
-    <%= f.label :is_varid, "販売中", {value: :male, style: "display: inline-block;"} %>
-    <%= f.radio_button :is_varid, :female %>
-    <%= f.label :is_varid, "販売停止中", {value: :female, style: "display: inline-block;"} %>
+<div class='row'>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h4>商品新規登録</h4>
+      <%= form_with model: @item, url: admins_items_path, local:true do |f| %>
+      <div class="form-inline">
+        <label class="col-sm-4">商品画像</label>
+        <div class="col-sm-8 form-inline">
+          <%= f.file_field :image %>
+          <!--bootstrapを書き込んでから修正する-->
+        </div>
+      </div><br>
+      <div class="form-inline">
+        <label class="col-sm-4">商品名</label>
+        <div class="col-sm-8 form-inline">
+          <%= f.text_field :name, :placeholder => "商品名" %>
+        </div>
+      </div><br>
+      <div class="form-inline">
+        <label class="col-sm-4">商品説明</label>
+        <div class="col-sm-8 form-inline">
+          <%= f.text_area :introduction, :placeholder => "ここに説明文を記述します" %>
+        </div>
+      </div><br>
+      <div class="form-inline">
+        <label class="col-sm-4">ジャンル</label>
+        <div class="col-sm-8 form-inline">
+          <%#= f.collection_select (:genre_id, @genres, :id, :name, {include_blank: true}) %>
+        </div>
+      </div><br>
+      <div class="form-inline">
+        <label class="col-sm-4">税抜価格</label>
+        <div class="col-sm-8 form-inline">
+          <%= f.text_field :taxfree, :placeholder => "1000" %>円
+        </div>
+      </div><br>
+      <div class="form-inline">
+        <label class="col-sm-4">販売ステータス</label>
+        <div class="col-sm-8 form-inline">
+          <%= form_with model: @item, url: admins_items_path, local: true do |from| %>
+            <%= f.radio_button :is_valid, :male %>
+            <%= f.label :is_valid, "販売中", {value: :male, style: "display: inline-block;"} %>
+            <%= f.radio_button :is_valid, :female %>
+            <%= f.label :is_valid, "販売停止中", {value: :female, style: "display: inline-block;"} %>
+          <% end %>
+        </div>
+      </div><br>
+      <div class="text-center">
+        <%= f.submit '新規登録', class: 'btn btn-success' %>
+      </div>
     <% end %>
-    <p><%= f.submit '新規登録' %></p>
-  <% end %>
+  </div>
 </div>
-
