@@ -7,4 +7,6 @@ class Item < ApplicationRecord
 #   validates :genre, inclusion: { in: %w(draft publish private) }
   validates :taxfree, presence: true
   validates :is_valid, inclusion: { in: [true, false] }
+  has_many :cart_items
+  has_many :order_items
 end

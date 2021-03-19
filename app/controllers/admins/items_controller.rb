@@ -3,7 +3,7 @@ class Admins::ItemsController < ApplicationController
   def new
     @item = Item.new
     @items = Item.all
-    # @genres = Genre.all
+    @genres = Genre.all
   end
 
   def index
@@ -17,8 +17,11 @@ class Admins::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to admins_item_path(@item)
+    if @item.save
+      redirect_to admins_item_path(@item)
+    else
+      render "index"
+    end
   end
 
   def edit
@@ -29,8 +32,7 @@ class Admins::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:image, :name, :introduction, :taxfree, :is_valid)
-    #後ほどジャンル追加する
+    params.require(:item).permit(:image, :name, :introduction, :genre, :taxfree, :is_valid)
   end
 
 end
