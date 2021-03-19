@@ -40,8 +40,9 @@ Genre.create!(
 )
 
 Item.create!(
-   name: 'test',
-   taxfree: '1500',
+   name: 'いちごのショートケーキ',
+   introduction:'栃木県産のとちおとめを贅沢に使用しています。',
+   taxfree: '2750',
 )
 
 Item.create!(
