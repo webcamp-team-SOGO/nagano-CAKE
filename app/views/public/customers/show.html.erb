@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <td>登録情報</td>
-      <td></td>
+      <td><%= link_to "編集", edit_customer_path(current_customer.id) %></td>
     </tr>
   </thead>
   <tbody>
@@ -34,4 +34,16 @@
       <td><%= @customer.email %></td>
     </tr>
   </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <td>配送先</td>
+      <td><%= link_to "一覧を見る", deliveries_path %></td>
+    </tr>
+    <tr>
+      <td>注文履歴</td>
+      <td><%= link_to "一覧を見る", orders_path %></td>
+    </tr>
+  </thead>
 </table>
