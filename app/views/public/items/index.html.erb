@@ -7,8 +7,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @items.each do |item| %>
       <tr>
+        <% @items.each do |item| %>
         <td>
           <div>
             <%= link_to item_path(item.id) do %>
@@ -24,8 +24,8 @@
             ¥<%= item.taxfree %>
           </div>
         </td>
+         <% end %>
       </tr>
-      <% end %>
     </table>
   <%= paginate(@kaminari) %>
 </div>
