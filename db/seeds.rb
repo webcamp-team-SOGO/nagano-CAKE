@@ -23,3 +23,38 @@ Admin.create!(
    password: 'testtest',
 )
 
+Genre.create!(
+   name: '焼き菓子',
+)
+
+Genre.create!(
+   name: 'プリン',
+)
+
+Genre.create!(
+   name: 'ケーキ',
+)
+
+Genre.create!(
+   name: 'マカロン',
+)
+
+Item.create!(
+   name: 'test',
+   taxfree: '1500',
+)
+
+Item.create!(
+   name: 'test2',
+   taxfree: '1500',
+)
+
+Item.create!(
+   name: 'test3',
+   taxfree: '1500',
+)
+
+Item.create!(
+   name: 'test4',
+   taxfree: '1500',
+)
