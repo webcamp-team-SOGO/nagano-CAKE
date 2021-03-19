@@ -2,4 +2,34 @@
 
 <h3 class="bg-light">each文で一覧表示　内容はid/last_name/first_name/email/is_valid</h3>
 
+
+
+<table>
+    <thead class="thead-light">
+        <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= @customers.each do |customer| %>
+        <tr>
+            <td><%=  customerid %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
 <h3 class="bg-light">パジネーションを設置</h3>
