@@ -3,7 +3,7 @@
       <%= image_tag('img/logo3.png', class: 'logo-image') %>
       <ul>
         <% if customer_signed_in? %>
-          <li>ようこそ、<%= @customer.last_name %>さん！</li>
+
           <li><%= link_to "マイページ", customer_path(current_customer.id) %></li>
           <!--リンクは適当-->
           <li><%= link_to "商品一覧", items_path %></li>
