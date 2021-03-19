@@ -3,19 +3,23 @@
   <thead>
     <tr>
       <td>登録情報</td>
-      <td><%= link_to "編集", edit_customer_path(current_customer.id) %></td>
+      <td><%= link_to "編集する", edit_customer_path(current_customer.id) %></td>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>氏名</td>
-      <td><%= @customer.last_name %></td>
-      <td><%= @customer.first_name %></td>
+      <td>
+        <%= @customer.last_name %>
+        <%= @customer.first_name %>
+      </td>
     </tr>
     <tr>
       <td>カナ</td>
-      <td><%= @customer.k_last_name %></td>
-      <td><%= @customer.k_first_name %></td>
+      <td>
+        <%= @customer.k_last_name %>
+        <%= @customer.k_first_name %>
+      </td>
     </tr>
     <tr>
       <td>郵便番号</td>
