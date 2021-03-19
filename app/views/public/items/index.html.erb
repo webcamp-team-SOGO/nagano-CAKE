@@ -1,14 +1,27 @@
-<h1>商品一覧</h1>
-
 <div>
   <table>
-        <% @items.each do |item| %>
-        <tr>
-            <td><%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg', fallback: "img/no_image.jpg" %></td>
-            <td><%= item.name %></td>
-            <td>¥<%= item.taxfree %></td>
-        </tr>
-        <% end %>
+    <thead>
+      <tr>
+        <td><h1>商品一覧</h1></td>
+        <td><h3>(全<%= @items.count%>件)</h3></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+      <tr>
+        <td>
+          <div>
+            <%= attachment_image_tag item, :image_id, :fill, 100, 100, format: 'jpeg', fallback: "img/no_image.jpg" %>
+          </div>
+          <div>
+            <%= item.name %>
+          </div>
+          <div>
+            ¥<%= item.taxfree %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
     </table>
   <%= paginate(@kaminari) %>
 </div>
