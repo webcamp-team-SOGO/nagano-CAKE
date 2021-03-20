@@ -23,7 +23,7 @@ before_action :authenticate_admin!
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      redirect_to admins_genres_path, notice: "あめでとう、やったね！！"
+      redirect_to admins_genres_path, notice: "更新しました"
     else
       render "edit"
     end
