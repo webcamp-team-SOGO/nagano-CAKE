@@ -1,2 +1,10 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+<div class='row'>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h3 class="bg-light">注文履歴詳細</h3>
+    <%= form_with model: @customer, url: admins_orders_path, method: :get, local:true do |f| %>
+    <div class="group">
+      <label class="購入者"><%= customer.name %></label>
+    </div>
+    <div class="group">
+      <label class="注文日"><%= customer.name %></label>
+    </div>
