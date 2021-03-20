@@ -1,2 +1,45 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h4>会員情報編集</h4>
+<table>
+  <%= form_with model:@customer, method: :patch, local:true do |f| %>
+  <thead>
+    <tr>
+      <td>氏名</td>
+      <td>
+        <%= f.text_field :last_name, placeholder: "令和", autofocus: true, autocomplete: "last_name" %>
+        <%= f.text_field :first_name, placeholder: "道⼦", autofocus: true, autocomplete: "first_name" %>
+      </td>
+    </tr>
+    <tr>
+      <td>フリガナ</td>
+      <td>
+        <%= f.text_field :k_last_name, placeholder: "レイワ", autofocus: true, autocomplete: "k_last_name" %>
+        <%= f.text_field :k_first_name, placeholder: "ミチコ", autofocus: true, autocomplete: "k_first_name" %>
+      </td>
+    </tr>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= f.text_field :postal_code, placeholder: "0000000", autofocus: true, autocomplete: "postal_code" %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address, placeholder: "東京都渋⾕区代々⽊神園町0-0", autofocus: true, autocomplete: "address" %></td>
+    </tr>
+    <tr>
+      <td>電話番号</td>
+      <td><%= f.text_field :telephone_number, placeholder: "0000000000", autofocus: true, autocomplete: "telephone_number" %></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= f.email_field :email,placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <td><%= f.submit '編集内容を保存' %></td>
+      </td>
+      <td>退会</td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
