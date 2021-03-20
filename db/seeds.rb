@@ -58,3 +58,13 @@ Genre.create!(
 Genre.create!(
    name: 'マカロン',
 )
+
+Order.create!(
+   shipping: '800',
+   total_payment: '2500',
+   payment_method: '0',
+   name: '毛利小五郎',
+   postal_code: '111-1111',
+   address: '東京都米花市米花町5丁目23番地',
+   status: '1',
+)
