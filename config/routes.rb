@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
   sessions: 'admins/sessions'
-
   }
+
+
 
   namespace :admins do
     resources :customers, only: [:index, :edit, :update, :show]
@@ -32,6 +33,9 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show]
     resources :deliveries, only: [:index, :create, :update, :destroy, :edit]
+    get 'confirm/:id' => 'customers#confirm', as: 'confirm_confirm'
+    patch ':id/withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
+    put 'withdraw/:id' => 'customers#withdraw'
   end
 
 end
