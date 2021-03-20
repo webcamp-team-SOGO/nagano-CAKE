@@ -34,4 +34,5 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:index, :create, :update, :destroy, :edit]
   end
 
+  get 'customers/cart_items/destroy_all' => 'public/cart_items#destroy_all'
 end
