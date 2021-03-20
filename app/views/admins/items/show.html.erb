@@ -25,18 +25,18 @@
     <div class="form-inline">
       <label class="col-sm-2">税込価格<br>（税抜価格）</label>
       <div class="col-sm-7 form-inline">
-         <%= @item.taxfree * 1.1 %>
-         (<%= converting_to_jpy(@item.taxfree) %>)円
+        <%= (@item.taxfree * 1.1).ceil %>
+        (<%= converting_to_jpy(@item.taxfree) %>)円
       </div>
     </div>
     <div class="form-inline">
       <label class="col-sm-2">販売ステータス</label>
       <div class="col-sm-7 form-inline">
-         <% if @item.is_valid == true %>
-         <div class="text-success">販売中</div>
-         <% else %>
-         <div class="text-secondary">販売停止中</div>
-         <% end %>
+        <% if @item.is_valid == true %>
+        <div class="text-success">販売中</div>
+        <% else %>
+        <div class="text-secondary">販売停止中</div>
+      　<% end %>
       </div>
     </div>
     <div>
