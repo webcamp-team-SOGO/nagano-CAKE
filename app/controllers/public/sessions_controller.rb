@@ -8,10 +8,15 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  # POST /resource/sign_in                  #customerを経由  #emailを参照
+  def create                                        #||       #|| 
+      @customer = Customer.find_by(email: params[:customer][:email])#からむ検索　find_byで検索したいもの
+      if @customer && @customer.is_valid == false　#両方満たしたら　＆＆データが入っているかどうか　is_validがfalseならリダイレクトする
+        redirect_to new_customer_session_path
+      else
+        super
+      end
+  end
 
   # DELETE /resource/sign_out
   # def destroy

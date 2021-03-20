@@ -10,18 +10,19 @@ class Customers::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+   def create
+     super
+   end
 
   # DELETE /resource/sign_out
   # def destroy
   #   super
   # end
   def reject_inactive_customer
-    @customer = Customer.find_by(name: params[:user][:name])
+    @customer = Customer.find(params[:email][:name])
+    byebug
     if @customer
-      if @customer.valid_password?(params[:user][:password]) && !@customer.is_valid
+      if @customer.valid_password?(params[:email][:password]) && !@customer.is_valid
         redirect_to new_customer_session_path
       end
     end
