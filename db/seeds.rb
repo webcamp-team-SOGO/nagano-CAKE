@@ -60,11 +60,50 @@ Genre.create!(
 )
 
 Order.create!(
+   customer_id: '1',
    shipping: '800',
    total_payment: '2500',
-   payment_method: '0',
+   payment_method: 0,
    name: '毛利小五郎',
    postal_code: '111-1111',
    address: '東京都米花市米花町5丁目23番地',
-   status: '1',
+   status: 1,
+)
+
+Order.create!(
+   customer_id: '1',
+   shipping: '800',
+   total_payment: '2500',
+   payment_method: 1,
+   name: '毛利小五',
+   postal_code: '111-1112',
+   address: '東京都米花市米花町5丁目22番地',
+   status: 0,
+)
+4.times do |n|
+   Item.create!(
+      genre_id: "#{n + 1}",
+      name: "お菓子#{n + 1}",
+      image_id: 'logo1.jpg',
+      introduction: "おいしいよ！#{n + 1}",
+      taxfree: "1200#{n + 1}",
+      is_valid: 'true',
+   )
+end
+
+
+OrderItem.create!(
+   order_id: '1',
+   item_id: '1',
+   price: '900',
+   making_status: 1,
+   number: '8',
+)
+
+OrderItem.create!(
+   order_id: '1',
+   item_id: '2',
+   price: '2300',
+   making_status: 2,
+   number: '3',
 )
