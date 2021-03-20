@@ -25,7 +25,7 @@
     <div class="form-inline">
       <label class="col-sm-2">税込価格<br>（税抜価格）</label>
       <div class="col-sm-7 form-inline">
-        <%= @item.taxfree.to_s(:delimited) %> (<%= (@item.taxfree * 1.1).round.to_s(:delimited) %>)円
+        <%= (@item.taxfree * 1.1).round.to_s(:delimited) %> (<%= @item.taxfree.to_s(:delimited) %>)円
       </div>
     </div>
     <div class="form-inline">
