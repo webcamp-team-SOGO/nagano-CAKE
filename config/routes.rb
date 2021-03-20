@@ -33,8 +33,9 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show]
     resources :deliveries, only: [:index, :create, :update, :destroy, :edit]
-    get 'confirm/:id' => 'customers#confirm', as: 'confirm_confirm'
-    patch ':withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
   end
+
+  get 'confirm/:id' => 'customers#confirm', as: 'confirm_confirm'
+  patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
 
 end
