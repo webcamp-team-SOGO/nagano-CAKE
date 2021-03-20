@@ -1,6 +1,7 @@
 <div class='row'>
   <div class="mx-auto">
     <h3 class="bg-light">商品一覧</h3>
+    <%=link_to "+", new_admins_item_path, class: 'btn btn-outline-secondary' %>
     <table class='table table-hover table-inverse'>
       <thead>
         <tr>
@@ -19,7 +20,7 @@
                 <%= item.name %>
                 <% end %>
             </td>
-            <td><%= item.taxfree %></td>
+            <td><%= item.taxfree.to_s(:delimited) %></td>
             <td><%= item.genre.name %></td>
             <% if item.is_valid == true %>
          　   <td class="text-success">販売中</td>
