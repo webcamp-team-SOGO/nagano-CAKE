@@ -1,13 +1,15 @@
 class Admins::OrdersController < ApplicationController
+before_action :authenticate_admin!
 
   def index
+
     case params[:order_sort]
 
     when "0"
-     @user = User.find(params[:id])
-     @orders = @user.orders.page(params[:page]).per(10)
-    else
      @orders = Order.page(params[:page]).per(10)
+    else
+     @customer = Customer.find(params[:id])
+     @orders = @customer.orders.page(params[:page]).per(10)
     end
 
   end
