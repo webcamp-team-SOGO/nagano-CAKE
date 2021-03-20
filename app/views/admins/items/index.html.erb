@@ -21,12 +21,11 @@
             </td>
             <td><%= item.taxfree %></td>
             <td><%= item.genre.name %></td>
-            <td><% if item.is_valid == true %>
-                <div class="text-success">販売中</div>
+            <% if item.is_valid == true %>
+                <td class="text-success">販売中</td>
            　　   <% else %>
-           　　   <div class="text-secondary">販売停止中</div>
-           　    <% end %>
-            </td>
+           　　   <td class="text-secondary">販売停止中</td>
+           　 <% end %>
           </tr>
         <% end %>
       </tbody>
