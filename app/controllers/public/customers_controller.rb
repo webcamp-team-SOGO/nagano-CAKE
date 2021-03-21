@@ -18,9 +18,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm
+    @customer = Customer.find(params[:id])
   end
 
   def withdraw
+    @customer = Customer.find(params[:id])
+    @customer.update(is_valid: false)
+    reset_session
+    redirect_to root_path
   end
 
   private

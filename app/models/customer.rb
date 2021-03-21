@@ -13,4 +13,7 @@ class Customer < ApplicationRecord
          validates :telephone_number, presence: true, uniqueness: true
          validates :email, presence: true, uniqueness: true
          has_many :cart_items
+         
+  has_many :orders, dependent: :destroy
+    
 end
