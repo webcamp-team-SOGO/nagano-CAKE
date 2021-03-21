@@ -7,7 +7,6 @@
         <label class="col-sm-4">商品画像</label>
         <div class="col-sm-8 form-inline">
           <%= f.file_field :image %>
-          <!--bootstrapを書き込んでから修正する-->
         </div>
       </div><br>
       <div class="form-inline">
@@ -25,7 +24,7 @@
       <div class="form-inline">
         <label class="col-sm-4">ジャンル</label>
         <div class="col-sm-8 form-inline">
-          <%= f.collection_select(:genre_id, Genre.all, :id, :name, {include_blank: true}) %>
+          <%= f.collection_select(:genre_id, Genre.all, :id, :name,  {prompt: "--選択してください--"}) %>
         </div>
       </div><br>
       <div class="form-inline">
