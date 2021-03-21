@@ -9,9 +9,11 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in                  #customerを経由  #emailを参照
-  def create                                        #||       #|| 
-      @customer = Customer.find_by(email: params[:customer][:email])#からむ検索　find_byで検索したいもの
-      if @customer && @customer.is_valid == false　#両方満たしたら　＆＆データが入っているかどうか　is_validがfalseならリダイレクトする
+  def create                                        #||       #||
+      @customer = Customer.find_by(email: params[:customer][:email])
+      #からむ検索　find_byで検索したいもの
+      if @customer && @customer.is_valid == false
+        #両方満たしたら　＆＆データが入っているかどうか　is_validがfalseならリダイレクトする
         redirect_to root_path
       else
         super
