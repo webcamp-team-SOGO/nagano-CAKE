@@ -6,7 +6,7 @@
     </h4>
     </div>
   </div>
-  <%= form_with model: @order, url: confirm_orders_path, local: true do  |f| %>
+  <%= form_with model: @order, url: orders_confirm_path, local: true do  |f| %>
   <div class="row">
     <h5 class="font-weight-bold">支払い方法</h4>
   </div>
@@ -31,7 +31,7 @@
   <div class="row mt-3 form-check">
     <%= f.radio_button :delivery_address, 'delivery_address' %>
     <%= f.label :delivery_address, '登録済み住所から選択' %><br />
-    <%#= f.collection_select(:deliveries_id, @deliveries, :id, :order_address, {prompt: "--選択してください--"}) %>
+    <%= f.collection_select(:delivery_id, Delivery.all, :id, :address, {prompt: "--選択してください--"}) %>
   </div>
   <div class="row mt-3 form-check">
     <%= f.radio_button :delivery_address, "new_address" %>

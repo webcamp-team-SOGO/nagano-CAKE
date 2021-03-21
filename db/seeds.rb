@@ -6,9 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-
-   7.times do |n|
+7.times do |n|
     Customer.create!(
       email: "edogawa#{n + 1}@test.com",
       last_name: "江戸川#{n + 1}",
@@ -23,68 +21,10 @@
     )
   end
 
-   7.times do |n|
-    Customer.create!(
-      email: "mouriran#{n + 1}@test.com",
-      last_name: "江戸川#{n + 1}",
-      first_name: "コナン#{n + 1}",
-      k_last_name: "エドガワ#{n + 1}",
-      k_first_name: "コナン#{n + 1}",
-      postal_code: '1600022',
-      address: "東京都新宿区新宿２丁目５−１０ 成信ビル 4階#{n + 1}",
-      telephone_number: "08000000000#{n + 1}",
-      password: "password#{n + 1}",
-      is_valid: "false"
-    )
-  end
 
 Admin.create!(
    email: 'test@test.com',
    password: 'testtest',
 )
 
-Genre.create!(
-   name: '焼き菓子',
-)
-
-Genre.create!(
-   name: 'プリン',
-)
-
-Genre.create!(
-   name: 'ケーキ',
-)
-
-Genre.create!(
-   name: 'マカロン',
-)
-
-Item.create!(
-   name: 'いちごのショートケーキ',
-   introduction:'栃木県産のとちおとめを贅沢に使用しています。',
-   taxfree: '2750',
-)
-
-Item.create!(
-   name: 'test2',
-   taxfree: '1500',
-)
-
-Item.create!(
-   name: 'test3',
-   taxfree: '1500',
-)
-
-Item.create!(
-   name: 'test4',
-   taxfree: '1500',
-)
-4.times do |n|
-   Item.create!(
-      genre_id: "#{n + 1}",
-      name: "お菓子#{n + 1}",
-      introduction: "おいしいよ！#{n + 1}",
-      taxfree: "1200#{n + 1}",
-      is_valid: 'true',
-   )
-end
+Item.

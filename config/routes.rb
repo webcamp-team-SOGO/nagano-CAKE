@@ -31,15 +31,10 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show]
     resources :deliveries, only: [:index, :create, :update, :destroy, :edit]
+    post 'customer/confirm' => 'orders#confirm', as: 'orders_confirm'
     get 'confirm/:id' => 'customers#confirm', as: 'confirm_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
   end
 
-  get 'customers/cart_items/destroy_all' => 'public/cart_items#destroy_all'
-  
-  resources :orders, only: [:new, :create, :index, :show] do
-      collection do
-        post "confirm" 
-      end
-    end
+  delete 'customers/cart_items/destroy_all' => 'public/cart_items#destroy_all'
 end
