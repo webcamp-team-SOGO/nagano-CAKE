@@ -3,11 +3,12 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items
+    @numbers = (1..100).to_a
   end
 
   def create
     if @cart_item.blank?
-      @cart_item = current_customer.cart_item.build(item_id: params[:item_id])
+      @cart_item = current_customer.cart_items.build(item_id: params[:item_id])
     end
       @cart_item.number = params[:number].to_i
       @cart_item.save

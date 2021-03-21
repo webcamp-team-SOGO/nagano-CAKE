@@ -4,8 +4,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    #@cart_items = current_customer.cart_items
     @order = Order.find(params[:id])
-    @order_items = Order_item.all
+
+    @order_items = OrderItem.all
   end
 
   def confirm
