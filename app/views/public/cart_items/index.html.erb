@@ -1,2 +1,66 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row my-4">
+    <div class="col-md-6">
+      <h4>ショッピングカート</h4>
+    </div>
+    <div class="col-md-6 text-right">
+      <%= link_to "カートを空にする", customers_cart_items_destroy_all_path, method: :delete %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table bg-white table-bordered shadow">
+      <thead class="bg-secondary text-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= attachment_image_tag(cart_item.item, :image, fallback: "img/no_image.jpg", size: "75x50") %><p><%= cart_item.item.name %></p></td>
+          <td><%= (cart_item.item.taxfree * 1.1).round.to_s(:delimited) %></td>
+          <td>
+            <%= form_with url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
+              <%= f.select :number, options_for_select(@numbers, {selected: cart_item.number.to_i}) %>
+              <%= f.hidden_field :item_id, value: cart_item.item_id %>
+              <%= f.submit "変更" %>
+            <% end %>
+          </td>
+          <td><%= ((cart_item.item.taxfree * 1.1 ) * cart_item.number).round.to_s(:delimited) %></td>
+          <td>
+            <%= form_with url: cart_item_path(cart_item), method: :delete, local: true do |f| %>
+              <%= f.submit "削除する" %>
+              <%= f.hidden_field :item_id, value: cart_item.item_id %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="row my-4">
+    <div class="col-md-8">
+      <%= link_to "買い物を続ける", items_path, class: "btn btn-primary shadow" %>
+    </div>
+    <div class="col-md-4">
+      <table class="table table-bordered shadow">
+        <tr>
+          <th class="bg-secondary text-light">合計金額</th>
+          <td class="font-weight-bold"><%= (@cart_items.to_a.sum{|x| x.item.taxfree * x.number} * 1.1).floor.to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <% unless current_customer.cart_items.empty? %>
+        <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success shadow" %>
+      <% end %>
+    </div>
+  </div>
+</div>

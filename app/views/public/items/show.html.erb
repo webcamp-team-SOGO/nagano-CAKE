@@ -1,2 +1,22 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="mt-5 col-md-7">
+      <span class="col-md-5 offset-md-5"><%= attachment_image_tag @item, :image, format: 'jpeg', fallback: 'img/no_image.jpg', size:'300x200'%></span>
+    </div>
+
+    <div class="mt-5 col-md-5">
+      <p><%= @item.name %></p> 
+      <p><%= @item.introduction %></p>
+      <p>¥<%= (@item.taxfree).to_s(:delimited) %>（税込）</p>
+      <% if @item.is_valid == false %>
+        <div><%= "Sold Out" %></div>
+      <% else %>
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+        <%= f.select :number, options_for_select((1..100).to_a), include_blank: "個数選択" %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit "カートに入れる"%>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
