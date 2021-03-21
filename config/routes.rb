@@ -35,5 +35,5 @@ Rails.application.routes.draw do
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
   end
 
-  get 'customers/cart_items/destroy_all' => 'public/cart_items#destroy_all'
+  delete 'customers/cart_items/destroy_all' => 'public/cart_items#destroy_all'
 end

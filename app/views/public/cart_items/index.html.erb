@@ -21,8 +21,8 @@
       <tbody>
       <% @cart_items.each do |cart_item| %>
         <tr>
-          <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %><p><%= cart_item.item.name %></p></td>
-          <td><%= cart_item.item.taxfree.to_s(:delimited) %></td>
+          <td><%= attachment_image_tag(cart_item.item, :image, fallback: "img/no_image.jpg", size: "75x50") %><p><%= cart_item.item.name %></p></td>
+          <td><%= (cart_item.item.taxfree * 1.1).round.to_s(:delimited) %></td>
           <td>
             <%= form_with url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
               <%= f.select :number, options_for_select(@numbers, {selected: cart_item.number.to_i}) %>
@@ -30,7 +30,7 @@
               <%= f.submit "変更" %>
             <% end %>
           </td>
-          <td><%= (cart_item.item.taxfree * cart_item.number).to_s(:delimited) %></td>
+          <td><%= ((cart_item.item.taxfree * 1.1 ) * cart_item.number).round.to_s(:delimited) %></td>
           <td>
             <%= form_with url: cart_item_path(cart_item), method: :delete, local: true do |f| %>
               <%= f.submit "削除する" %>
