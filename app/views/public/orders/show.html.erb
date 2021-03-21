@@ -40,7 +40,7 @@
     </tr>
     <tr>
       <td>ご請求額</td>
-      <td><%= @order.total_payment %></td>
+      <td><%= @order.total_payment + @order.shipping %></td>
     </tr>
   </tbody>
 </table>
@@ -57,10 +57,10 @@
     </tr>
     <% @order_items.each do |order_item| %>
     <tr>
-      <td><%= order_item.name %></td>
+      <td><%= order_item.item.name %></td>
       <td><%= order_item.price %></td>
       <td><%= order_item.number %></td>
-      <td><%= (order_item.total_price).to_i  %></td>
+      <td><%= ((order_item.item.taxfree * 1.1 ) * order_item.number).round.to_s(:delimited) %></td>
     </tr>
     <% end %>
   </tbody>
