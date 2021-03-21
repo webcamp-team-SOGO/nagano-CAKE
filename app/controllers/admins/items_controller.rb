@@ -16,7 +16,7 @@ before_action :authenticate_admin!
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admins_item_path(@item), notice: "作成しました"
+      redirect_to admins_item_path(@item)
     else
       render "new"
     end
@@ -29,7 +29,7 @@ before_action :authenticate_admin!
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to admins_item_path, notice: "更新しました"
+      redirect_to admins_item_path
     else
       render "edit"
     end

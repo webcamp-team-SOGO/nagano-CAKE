@@ -20,7 +20,7 @@
                 <%= item.name %>
                 <% end %>
             </td>
-            <td><%= item.taxfree.to_s(:delimited) %></td>
+            <td><%= (item.taxfree * 1.1).round.to_s(:delimited) %></td>
             <td><%= item.genre.name %></td>
             <% if item.is_valid == true %>
          　   <td class="text-success">販売中</td>
