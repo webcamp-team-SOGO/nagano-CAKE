@@ -7,7 +7,6 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.text :introduction
       t.integer :taxfree
       t.boolean :is_valid, default: true, null: false
-
       t.timestamps
     end
   end
