@@ -9,10 +9,13 @@
       <label class="注文日"><%= customer.created_at.strftime('%Y/%m/%d') %></label>
     </div>
     <div class="group">
-      <label class="配送先"><%= customer.payment_method %></label>
+      <label class="配送先"><%= customer.address %></label>
+    </div>
+    <div class="group">
+      <label class="支払い方法"><%= customer.payment_method %></label>
     </div>
      <div class="group">
-      <label class="配送先"><%= customer.status %></label>
+      <label class="注文ステータス"><%= customer.status %></label>
     </div>
     <table class='table table-hover table-inverse'>
       <thead>
@@ -37,3 +40,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= paginate @order_items %>
+  </div>
+</div>
