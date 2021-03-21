@@ -15,9 +15,22 @@ before_action :authenticate_admin!
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   def update
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+      redirect_to request.referer, notice: "更新しました"
+    else
+      render "show", notice: "更新に失敗しました"
+    end
+  end
+
+private
+  def order_params
+    params.require(:order).permit(:status)
   end
 
 end

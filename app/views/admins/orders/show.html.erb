@@ -1,2 +1,100 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+<div class="container">
+
+<h3>注文履歴詳細</h3>
+  <div class="row">
+
+    <%= form_with model: @order, url: admins_order_path(@order), local: true do |f| %>
+
+      <p id="notice"><%= notice %></p>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th>購入者</th>
+              <th>
+                <%= link_to admins_customer_path(@order.customer) do %>
+                <%= @order.customer.last_name %><%= @order.customer.first_name %>
+                <% end %>
+              </th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>注文日</th>
+              <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th><p>配送先</p></th>
+              <th colspan="2">〒<%= @order.postal_code %><%= @order.address %><br><%= @order.name%></th>
+            </tr>
+            <tr>
+              <th>支払方法</th>
+              <th><%= @order.payment_method %></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>注文ステータス</th>
+              <th>
+              <%= f.select :status, Order.statuses.keys.to_a, {} %>
+              <%= f.submit "更新" ,class: 'btn btn-sm btn-success' %>
+              </th>
+            </tr>
+          </thead>
+        </table>
+
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @order_items.each do |order_item| %>
+          <%= form_with model: order_item, url: admins_order_item_path(order_item) do |f| %>
+          <tr>
+            <td><%= order_item.item.name %></td>
+            <td><%= order_item.price %></td>
+            <td><%= order_item.number %></td>
+            <td><%= order_item.price * order_item.number %></td>
+            <th><%= f.select :making_status, OrderItem.making_statuses.keys.to_a, {} %></th>
+            <td><%= f.submit "更新" ,class: 'btn btn-sm btn-success' %></td>
+          </tr>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="offset-1 col-lg-3">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>商品合計</th>
+            <% array = [] %>
+            <% @order_items.each do |order_item| %>
+            <% array << order_item.price * order_item.number %>
+            <% end %>
+            <th><%= array.sum %>円</th>
+          </tr>
+          <tr>
+            <th>送料</th>
+            <th><%= @order.shipping %>円</th>
+          </tr>
+          <tr>
+            <th>請求金額合計</th>
+            <th><%= array.sum + @order.shipping%>円</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
