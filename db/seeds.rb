@@ -28,38 +28,22 @@ Genre.create!(
 Genre.create!(
    name: 'マカロン',
 )
-
-Item.create!(
-   name: 'いちごのショートケーキ',
-   introduction:'栃木県産のとちおとめを贅沢に使用しています。',
-   taxfree: '2750',
-)
-
-Item.create!(
-   name: 'test2',
-   taxfree: '1500',
-)
-
-Item.create!(
-   name: 'test3',
-   taxfree: '1500',
-)
-
-Item.create!(
-   name: 'test4',
-   taxfree: '1500',
-)
-4.times do |n|
-   Item.create!(
-      genre_id: "#{n + 1}",
-      name: "お菓子#{n + 1}",
-      introduction: "おいしいよ！#{n + 1}",
-      taxfree: "1200#{n + 1}",
-      is_valid: 'true',
+Customer.create!(
+   last_name: '山田',
+   first_name: '孝之',
+   k_last_name: 'あああ',
+   k_first_name: 'あああ',
+   postal_code: '5800000',
+   address: 'Osaka City',
+   telephone_number: '08000000000',
+   email: 's@s',
+   password: 'aaaaaa',
    )
-Delivery.create!(
-   customer_id: '15',
-   name: 'momo',
-   postal_code: '0000',
-   address: 'momo',
+Order.create!(
+   customer_id: '1',
+   shipping: '800',
+   total_payment: '1800',
+   name: 'Jordan',
+   postal_code: '5800000',
+   address: 'Osaka',
    )
