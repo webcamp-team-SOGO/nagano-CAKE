@@ -1,2 +1,43 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<h3>注文情報確認</h3>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+        <th>送料</th>
+        <th><%= @order.shipping %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %><p><%= cart_item.item.name %></p></td>
+        <td><%= (item.taxfree * 1.1).round.to_s(:delimited) %> (<%= item.taxfree.to_s(:delimited) %>)</td>
+        <td><%= item.count %></td>
+        <td><%= (item.taxfree * 1.1).round.to_s(:delimited) %> (<%= item.taxfree.to_s(:delimited) %>)</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <p>送料</p>
+          <%= @order.shipping %>
+        </td>
+        <td>
+          <p>商品合計</p>
+          
+        </td>
+        <td>
+          <p>請求金額</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
