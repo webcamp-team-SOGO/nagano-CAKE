@@ -59,23 +59,12 @@ Genre.create!(
    name: 'マカロン',
 )
 
-Item.create!(
-   name: 'いちごのショートケーキ',
-   introduction:'栃木県産のとちおとめを贅沢に使用しています。',
-   taxfree: '2750',
-)
-
-Item.create!(
-   name: 'test2',
-   taxfree: '1500',
-)
-
-Item.create!(
-   name: 'test3',
-   taxfree: '1500',
-)
-
-Item.create!(
-   name: 'test4',
-   taxfree: '1500',
-)
+4.times do |n|
+   Item.create!(
+      genre_id: "#{n + 1}",
+      name: "お菓子#{n + 1}",
+      introduction: "おいしいよ！#{n + 1}",
+      taxfree: "1200#{n + 1}",
+      is_valid: 'true',
+   )
+end
