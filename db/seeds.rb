@@ -29,7 +29,6 @@ Genre.create!(
    name: 'マカロン',
 )
 
-<<<<<<< HEAD
 Item.create!(
    name: 'いちごのショートケーキ',
    introduction:'栃木県産のとちおとめを贅沢に使用しています。',
@@ -57,11 +56,10 @@ Item.create!(
       introduction: "おいしいよ！#{n + 1}",
       taxfree: "1200#{n + 1}",
       is_valid: 'true',
-=======
+   )
 Delivery.create!(
    customer_id: '15',
    name: 'momo',
    postal_code: '0000',
    address: 'momo',
->>>>>>> e69ee0dda8bec2ac87f551a3a620e136378a1334
    )
