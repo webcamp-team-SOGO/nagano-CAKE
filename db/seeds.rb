@@ -58,3 +58,13 @@ Genre.create!(
 Genre.create!(
    name: 'マカロン',
 )
+
+4.times do |n|
+   Item.create!(
+      genre_id: "#{n + 1}",
+      name: "お菓子#{n + 1}",
+      introduction: "おいしいよ！#{n + 1}",
+      taxfree: "1200#{n + 1}",
+      is_valid: 'true',
+   )
+end
