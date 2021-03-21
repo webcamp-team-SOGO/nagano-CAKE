@@ -59,39 +59,6 @@ Genre.create!(
    name: 'マカロン',
 )
 
-Order.create!(
-   customer_id: '1',
-   shipping: '800',
-   total_payment: '2500',
-   payment_method: 0,
-   name: '毛利小五郎',
-   postal_code: '111-1111',
-   address: '東京都米花市米花町5丁目23番地',
-   status: 1,
-)
-
-Order.create!(
-   customer_id: '1',
-   shipping: '800',
-   total_payment: '2500',
-   payment_method: 1,
-   name: '毛利小五',
-   postal_code: '111-1112',
-   address: '東京都米花市米花町5丁目22番地',
-   status: 0,
-)
-
-Order.create!(
-   customer_id: '2',
-   shipping: '800',
-   total_payment: '2500',
-   payment_method: 0,
-   name: '毛利小五',
-   postal_code: '111-1112',
-   address: '東京都米花市米花町5丁目22番地',
-   status: 2,
-)
-
 4.times do |n|
    Item.create!(
       genre_id: "#{n + 1}",
@@ -101,44 +68,3 @@ Order.create!(
       is_valid: 'true',
    )
 end
-
-
-OrderItem.create!(
-   order_id: '1',
-   item_id: '1',
-   price: '900',
-   making_status: 1,
-   number: '8',
-)
-
-OrderItem.create!(
-   order_id: '1',
-   item_id: '2',
-   price: '2300',
-   making_status: 2,
-   number: '3',
-)
-
-OrderItem.create!(
-   order_id: '2',
-   item_id: '2',
-   price: '2300',
-   making_status: 2,
-   number: '50',
-)
-
-OrderItem.create!(
-   order_id: '2',
-   item_id: '1',
-   price: '1000',
-   making_status: 0,
-   number: '200',
-)
-
-OrderItem.create!(
-   order_id: '3',
-   item_id: '2',
-   price: '2300',
-   making_status: 3,
-   number: '5',
-)
