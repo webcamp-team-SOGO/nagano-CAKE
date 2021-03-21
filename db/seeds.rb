@@ -47,3 +47,9 @@ Order.create!(
    postal_code: '5800000',
    address: 'Osaka',
    )
+OrderItem.create!(
+   order_id: '1',
+   item_id: '1',
+   price: '1800',
+   number: '1',
+   )
