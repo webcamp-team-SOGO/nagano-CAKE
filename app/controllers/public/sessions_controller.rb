@@ -9,9 +9,14 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+      @customer = Customer.find_by(email: params[:customer][:email])
+      if @customer && @customer.is_valid == false
+        redirect_to root_path
+      else
+        super
+      end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
