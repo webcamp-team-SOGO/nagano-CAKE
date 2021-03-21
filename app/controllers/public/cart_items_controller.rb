@@ -3,6 +3,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items
+    @numbers = (1..100).to_a
   end
 
   def create
