@@ -36,4 +36,10 @@ Rails.application.routes.draw do
   end
 
   get 'customers/cart_items/destroy_all' => 'public/cart_items#destroy_all'
+  
+  resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post "confirm" 
+      end
+    end
 end
