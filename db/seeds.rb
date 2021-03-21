@@ -28,14 +28,3 @@ Genre.create!(
 Genre.create!(
    name: 'マカロン',
 )
-
-Delivery.create!(
-   customer_id: '15',
-   name: 'momo',
-   postal_code: '0000',
-   address: 'momo',
-   )
-<<<<<<< HEAD
-end
-=======
->>>>>>> e69ee0dda8bec2ac87f551a3a620e136378a1334

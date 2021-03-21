@@ -15,10 +15,4 @@ class Customer < ApplicationRecord
 
   has_many :deliveries
   has_many :orders, dependent: :destroy
-<<<<<<< HEAD
-  
-    
-=======
-
->>>>>>> e69ee0dda8bec2ac87f551a3a620e136378a1334
 end
