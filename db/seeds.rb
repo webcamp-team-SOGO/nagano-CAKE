@@ -8,36 +8,6 @@
 
 
 
-   7.times do |n|
-    Customer.create!(
-      email: "edogawa#{n + 1}@test.com",
-      last_name: "江戸川#{n + 1}",
-      first_name: "コナン#{n + 1}",
-      k_last_name: "エドガワ#{n + 1}",
-      k_first_name: "コナン#{n + 1}",
-      postal_code: '1600022',
-      address: "東京都新宿区新宿２丁目５−１０ 成信ビル 4階#{n + 1}",
-      telephone_number: "09012345678#{n + 1}",
-      password: "password#{n + 1}",
-      is_valid: "true"
-    )
-  end
-
-   7.times do |n|
-    Customer.create!(
-      email: "mouriran#{n + 1}@test.com",
-      last_name: "江戸川#{n + 1}",
-      first_name: "コナン#{n + 1}",
-      k_last_name: "エドガワ#{n + 1}",
-      k_first_name: "コナン#{n + 1}",
-      postal_code: '1600022',
-      address: "東京都新宿区新宿２丁目５−１０ 成信ビル 4階#{n + 1}",
-      telephone_number: "08000000000#{n + 1}",
-      password: "password#{n + 1}",
-      is_valid: "false"
-    )
-  end
-
 Admin.create!(
    email: 'test@test.com',
    password: 'testtest',
@@ -59,6 +29,27 @@ Genre.create!(
    name: 'マカロン',
 )
 
+<<<<<<< HEAD
+Item.create!(
+   name: 'いちごのショートケーキ',
+   introduction:'栃木県産のとちおとめを贅沢に使用しています。',
+   taxfree: '2750',
+)
+
+Item.create!(
+   name: 'test2',
+   taxfree: '1500',
+)
+
+Item.create!(
+   name: 'test3',
+   taxfree: '1500',
+)
+
+Item.create!(
+   name: 'test4',
+   taxfree: '1500',
+)
 4.times do |n|
    Item.create!(
       genre_id: "#{n + 1}",
@@ -66,5 +57,11 @@ Genre.create!(
       introduction: "おいしいよ！#{n + 1}",
       taxfree: "1200#{n + 1}",
       is_valid: 'true',
+=======
+Delivery.create!(
+   customer_id: '15',
+   name: 'momo',
+   postal_code: '0000',
+   address: 'momo',
+>>>>>>> e69ee0dda8bec2ac87f551a3a620e136378a1334
    )
-end
