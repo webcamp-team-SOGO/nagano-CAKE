@@ -19,6 +19,7 @@ before_action :authenticate_admin!
   end
 
   def update
+    @order = Order.update(order_params)
   end
 
 end

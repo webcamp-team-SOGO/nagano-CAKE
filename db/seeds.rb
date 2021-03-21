@@ -68,3 +68,20 @@ Genre.create!(
       is_valid: 'true',
    )
 end
+  Order.create!(
+     customer_id: "1",
+     shipping: "800",
+     total_payment: "1800",
+     payment_method: "銀行振込",
+     name: "宛名",
+     postal_code: "0000000",
+     address: "大阪府大阪市中央区北浜2-5-23",
+     status: "入金待ち",
+     )
+  Order_item.create!(
+     order_id: "1",
+     item_id: "1",
+     price: "1000",
+     making_status: "製作不可",
+     number: "3",
+     )
