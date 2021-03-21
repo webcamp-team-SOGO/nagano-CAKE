@@ -4,8 +4,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @item = Item.find(params[:id])
     @cart_items = Cart_item.find(params[:id])
+    @item = @cart_items.item
     @taxfree = (@item.taxfree * 1.1).round
   end
 

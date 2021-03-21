@@ -67,4 +67,5 @@ Genre.create!(
       taxfree: "1200#{n + 1}",
       is_valid: 'true',
    )
+
 end
