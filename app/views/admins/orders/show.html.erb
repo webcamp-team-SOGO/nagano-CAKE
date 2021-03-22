@@ -1,4 +1,4 @@
-<h4>注文履歴一覧</h4>
+<h4>注文履歴詳細</h4>
 <div class='row'>
   <div class="col-sm-3">
     <div class="form-inline">
@@ -34,16 +34,16 @@
         </tr>
       </thead>
       <tbody>
-        <% @order_items.each do |order_item| %>
+        <%# @order_item.each do |order_item| %>
         <tr>
-          <td><%= order_item.name %></td>
-          <td><%= order_item.price %></td>
-          <td><%= order_item.all.sum(:number) %></td>
-          <td><%= (order_item.price * order_item.all.sum(:number)).round.to_s(:delimited) %></td>
-          <td><%= order_item.making_status %></td>
+          <td><%= @order.order_items.name %></td>
+          <td><%= @order.order_items.price %></td>
+          <td><%= @order.order_items.all.sum(:number) %></td>
+          <td><%= (@order.order_items.price * @order.order_items.all.sum(:number)).round.to_s(:delimited) %></td>
+          <td><%= @order.order_items.making_status %></td>
           <td><%= f.submit "更新", class: 'btn btn-success'%></td>
         </tr>
-        <% end %>
+        <%# end %>
       </tbody>
     </table>
 </div>
