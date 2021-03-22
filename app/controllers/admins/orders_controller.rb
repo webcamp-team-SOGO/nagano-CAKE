@@ -16,6 +16,7 @@ before_action :authenticate_admin!
 
   def show
     @order = Order.find(params[:id])
+    @order_items = OrderItem.all
   end
 
   def update

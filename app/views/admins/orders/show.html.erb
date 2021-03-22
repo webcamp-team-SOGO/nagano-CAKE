@@ -34,16 +34,19 @@
         </tr>
       </thead>
       <tbody>
-        <%# @order_item.each do |order_item| %>
+        <% @order_items.each do |order_item| %>
         <tr>
-          <td><%= @order.order_items.name %></td>
-          <td><%= @order.order_items.price %></td>
-          <td><%= @order.order_items.all.sum(:number) %></td>
-          <td><%= (@order.order_items.price * @order.order_items.all.sum(:number)).round.to_s(:delimited) %></td>
-          <td><%= @order.order_items.making_status %></td>
-          <td><%= f.submit "更新", class: 'btn btn-success'%></td>
+          <td><%= order_item.item.name %></td>
+          <td><%= converting_to_jpy(order_item.price) %></td>
+          <td><%= order_item.number %></td>
+          <td><%= converting_to_jpy(order_item.price * order_item.number) %></td>
+          <td><%= order_item.making_status %></td>
+          <td><%= form_with url: "admins_order_item" do |f| %>
+              <%= f.submit "更新", class: 'btn btn-success'%>
+          </td>
         </tr>
-        <%# end %>
+        <% end %>
+        <% end %>
       </tbody>
     </table>
 </div>
