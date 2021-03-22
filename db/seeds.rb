@@ -6,6 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+7.times do |n|
+ Customer.create!(
+   email: "test#{n + 1}@test.com",
+   last_name: "test#{n + 1}",
+   first_name: "test#{n + 1}",
+   k_last_name: "テスト#{n + 1}",
+   k_first_name: "テスト#{n + 1}",
+   postal_code: '160022',
+   address: "東京都新宿区新宿２丁目５−１０ 成信ビル 4階",
+   telephone_number: "09012345678#{n + 1}",
+   password: "password",
+   is_valid: "true"
+ )
+end
 
 7.times do |n|
  Customer.create!(

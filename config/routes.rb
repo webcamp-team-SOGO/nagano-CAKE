@@ -31,9 +31,10 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show]
     resources :deliveries, only: [:index, :create, :update, :destroy, :edit]
-    post 'customer/confirm' => 'orders#confirm', as: 'orders_confirm'
-    #get 'customer/confirm/:id' => 'orders#confirm', as: 'orders_confirm'
-    get 'customer/confirm/:id' => 'orders#show', as: 'orders_show'
+    # 注文
+    post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
+    get 'orders/:id' => 'orders#show', as: 'orders_show'
+    # 会員の退会
     get 'confirm/:id' => 'customers#confirm', as: 'confirm_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
   end
