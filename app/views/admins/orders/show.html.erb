@@ -19,10 +19,12 @@
     </div>
      <div class="form-inline">
       <label class>注文ステータス</label>
-      <div><%= @order.status %></div>
+      <%= form_with url: "orders_path" do |f| %>
+      <div><%= f.collection_select(:status, Order.all, :id, :name) %> <%= f.submit "更新", class: 'btn btn-success' %></div>
+      <% end %>
     </div>
   </div>
-</div>
+</div><br>
 <div class='row'>
   <div class="col-sm-9">
     <table class="table">
@@ -43,10 +45,10 @@
           <td><%= converting_to_jpy(order_item.price) %></td>
           <td><%= order_item.number %></td>
           <td><%= converting_to_jpy(order_item.price * order_item.number) %></td>
-          <td><%= order_item.making_status %></td>
           <td><%= form_with url: "admins_order_item" do |f| %>
-              <%= f.submit "更新", class: 'btn btn-success'%>
+              <%= f.collection_select(:payment_method, Order.all, :id, :name) %>
           </td>
+          <td><%= f.submit "更新", class: 'btn btn-success'%></td>
         </tr>
         <% end %>
         <% end %>
