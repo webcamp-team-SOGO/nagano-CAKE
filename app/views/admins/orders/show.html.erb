@@ -22,7 +22,7 @@
     </div>
      <div class="form-inline">
       <label class>注文ステータス</label>
-      <%= form_with url: "orders_path" do |f| %>
+      <%= form_with model: @order, url: admins_order_path(@order), local: true do |f| %>
       <div><%= f.select :status, Order.statuses.keys.to_a, {}%>
            <%= f.submit "更新", class: 'btn btn-success' %>
       </div>
@@ -46,14 +46,13 @@
       </thead>
       <tbody>
         <% @order_items.each do |order_item| %>
+        <%= form_with model: order_item, url: admins_order_item_path(order_item), local: true do |f| %>
         <tr>
           <td><%= order_item.item.name %></td>
           <td><%= converting_to_jpy(order_item.price) %></td>
           <td><%= order_item.number %></td>
           <td><%= converting_to_jpy(order_item.price * order_item.number) %></td>
-          <td><%= form_with url: "admins_order_item" do |f| %>
-              <%= f.select :making_status, OrderItem.making_statuses.keys.to_a, {}%>
-          </td>
+          <td><%= f.select :making_status, OrderItem.making_statuses.keys.to_a, {}%></td>
           <td><%= f.submit "更新", class: 'btn btn-success'%></td>
         </tr>
         <% end %>
