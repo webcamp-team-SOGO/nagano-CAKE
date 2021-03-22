@@ -12,22 +12,39 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order_item = OrderItem.find(params[:id])
-    #@cart_items =
+    @order = Order.find_or_initialize_by(id: params[:id])
+    @order.assign_attributes(order_params)
+    @order_item = OrderItem.find_or_initialize_by(id: params[:id])
+    @order_item.assign_attributes(order_item_params)
+    @customer = current_customer
+    @cart_items = @customer.cart_items
   end
 
   def create
-    @order = Order.new(delivery_params)
+    #byebug
+    @order = Order.new(order_params)
     @order.save
+    @order_item = OrderItem.new(order_item_params)
+    @order_item.save
+    redirect_to root_path
   end
 
   def thanks
   end
 
   def index
+    @orders = current_customer.orders
   end
+
+
   private
-  def delivery_params
-    params.require(:order).permit(:name, :postal_code, :address)
+
+  def order_params
+    params.permit(:name, :postal_code, :address, :payment_method, :delivery_address)
   end
+
+  def order_item_params
+    params.permit(:number, :price )
+  end
+
 end
