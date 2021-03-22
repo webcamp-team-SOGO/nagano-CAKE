@@ -1,6 +1,9 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
+    @order = Order.new
+    @deliveries = Delivery.where(customer: current_customer)
   end
 
   def show
@@ -12,8 +15,8 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     #@cart_items = Cart_item.find(params[:id])
-    @item = @cart_items.item
-    @taxfree = (@item.taxfree * 1.1).round
+    #@item = @cart_items.item
+    #@taxfree = (@item.taxfree * 1.1).round
   end
 
   def create
@@ -23,6 +26,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
 

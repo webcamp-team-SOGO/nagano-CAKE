@@ -150,7 +150,11 @@ OrderItem.create!(
    number: '2',
 )
 end
+<<<<<<< HEAD
 a
 Genre.create!(
    name: 'マカロン',
 )
+=======
+
+>>>>>>> 65c77a77d035dd50f088465a4e7115e2eaacd28e
