@@ -22,6 +22,9 @@
       <div><%= @order.status %></div>
     </div>
   </div>
+</div>
+<div class='row'>
+  <div class="col-sm-9">
     <table class="table">
       <thead class="thead-light">
         <tr>
@@ -49,4 +52,27 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+    <div class="col-sm-3">
+      <div class="align-bottom">
+        <div class="group">
+        <div class="form-inline">
+          <label class>商品合計</label>
+          <div><%= converting_to_jpy(@order.total_payment) %>円</div>
+        </div>
+      </div><br>
+      <div class="group">
+        <div class="form-inline">
+          <label class>送料</label>
+          <div><%= converting_to_jpy(@order.shipping) %>円</div>
+        </div>
+      </div><br>
+      <div class="group">
+        <div class="form-inline">
+          <label class>請求金額合計</label>
+          <div><%= converting_to_jpy(@order.total_payment + @order.shipping) %>円</div>
+        </div>
+      </div><br>
+      </div></div>
+    </div>
 </div>
