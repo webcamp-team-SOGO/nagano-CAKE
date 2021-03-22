@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_181359) do
     t.integer "order_id"
     t.integer "item_id"
     t.integer "price"
-    t.integer "making_status"
+    t.integer "making_status", default: 0, null: false
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -92,11 +92,11 @@ ActiveRecord::Schema.define(version: 2021_03_16_181359) do
     t.integer "customer_id"
     t.integer "shipping"
     t.integer "total_payment"
-    t.integer "payment_method"
+    t.integer "payment_method", default: 0, null: false
     t.string "name"
     t.string "postal_code"
     t.string "address"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -23,6 +23,11 @@
           <div>
             ¥<%= item.taxfree %>
           </div>
+          <% if item.is_valid == false %>
+          <div><%= "Sold Out" %></div>
+          <% else %>
+          <div></div>
+          <% end %>
         </td>
          <% end %>
       </tr>

@@ -8,13 +8,15 @@
       <p><%= @item.name %></p> 
       <p><%= @item.introduction %></p>
       <p>¥<%= (@item.taxfree).to_s(:delimited) %>（税込）</p>
-      
-      <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+      <% if @item.is_valid == false %>
+        <div><%= "Sold Out" %></div>
+      <% else %>
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
         <%= f.select :number, options_for_select((1..100).to_a), include_blank: "個数選択" %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.submit "カートに入れる"%>
+        <% end %>
       <% end %>
     </div>
-    
   </div>
 </div>

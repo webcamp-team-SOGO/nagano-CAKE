@@ -6,7 +6,17 @@ class Public::OrdersController < ApplicationController
     @deliveries = Delivery.where(customer: current_customer)
   end
 
+  def show
+    #@cart_items = current_customer.cart_items
+    @order = Order.find(params[:id])
+    
+    @order_items = OrderItem.all
+  end
+
   def confirm
+    #@cart_items = Cart_item.find(params[:id])
+    #@item = @cart_items.item
+    #@taxfree = (@item.taxfree * 1.1).round
   end
 
   def create
@@ -18,7 +28,6 @@ class Public::OrdersController < ApplicationController
   def index
   end
 
-  def show
-  end
+
 
 end
