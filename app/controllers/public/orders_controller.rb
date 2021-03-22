@@ -8,9 +8,9 @@ class Public::OrdersController < ApplicationController
 
   def show
     #@cart_items = current_customer.cart_items
-    @order = Order.find(params[:id])
+    #@order = Order.find(params[:id])
     
-    @order_items = OrderItem.all
+    #@order_items = OrderItem.all
   end
 
   def confirm
