@@ -6,12 +6,12 @@
     </tr>
     <tr>
       <td>注文日</td>
-      <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
     </tr>
     <tr>
       <td>配送先</td>
       <td>
-        <%= @order.postal_code %>
+        〒<%= @order.postal_code %>
         <%= @order.address %>
       </td>
     </tr>
@@ -32,15 +32,15 @@
     </tr>
     <tr>
       <td>商品合計</td>
-      <td><%= @order.total_payment %></td>
+      <td><%= converting_to_jpy(@order.total_payment) %></td>
     </tr>
     <tr>
       <td>配送料</td>
-      <td><%= @order.shipping %></td>
+      <td><%= converting_to_jpy(@order.shipping) %></td>
     </tr>
     <tr>
       <td>ご請求額</td>
-      <td><%= @order.total_payment + @order.shipping %></td>
+      <td><%= converting_to_jpy(@order.total_payment + @order.shipping) %></td>
     </tr>
   </tbody>
 </table>
@@ -58,9 +58,9 @@
     <% @order_items.each do |order_item| %>
     <tr>
       <td><%= order_item.item.name %></td>
-      <td><%= order_item.price %></td>
+      <td><%= converting_to_jpy(order_item.price) %></td>
       <td><%= order_item.number %></td>
-      <td><%= ((order_item.item.taxfree * 1.1 ) * order_item.number).round.to_s(:delimited) %></td>
+      <td><%= converting_to_jpy(order_item.price * order_item.number) %></td>
     </tr>
     <% end %>
   </tbody>

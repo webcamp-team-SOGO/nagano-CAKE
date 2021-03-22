@@ -57,5 +57,6 @@ Order.create!(
    OrderItem.create!(
       order_id: '1',
       item_id: '1',
+      price: '1000',
       number: '1'
       )
