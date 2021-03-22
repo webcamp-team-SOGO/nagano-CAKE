@@ -3,6 +3,7 @@
     <thead>
       <tr>
         <th>商品名</th>
+        <th></th>
         <th>単価（税込）</th>
         <th>数量</th>
         <th>小計</th>
@@ -12,10 +13,11 @@
     <tbody>
       <% @order_items.each do |order_item| %>
       <tr>
-        <td><%= attachment_image_tag order_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %><p><%#= order_item.item.name %></p></td>
+        <td><%= attachment_image_tag order_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
+        <td><%= order_item.item.name %></td>
         <td><%= order_item.price %></td>
-        <td><%= order_item.number.count %></td>
-        <td><%#= @taxfree %></td>
+        <td><%= order_item.number %></td>
+        <td><%= order_item.price * order_item.number %></td>
       </tr>
       <% end %>
     </tbody>

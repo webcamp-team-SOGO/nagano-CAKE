@@ -12,8 +12,9 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.find(params[:id])
-    @order_items = OrderItem.find(params[:id])
-    #@taxfree = (@item.taxfree * 1.1).round
+    @item = Item.find(params[:id])
+    @order_items = @item.order_items
+    
   end
 
   def create
