@@ -120,3 +120,9 @@ OrderItem.create!(
    number: '2',
 )
 end
+
+CartItem.create!(
+   customer_id: "1",
+   item_id: "1",
+   number: '4',
+)

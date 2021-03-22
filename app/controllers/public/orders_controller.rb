@@ -11,7 +11,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    #byebug
     @delivery = Delivery.find(params[:id])
     @order = Order.find(params[:id])
     @item = Item.find(params[:id])
@@ -29,7 +28,5 @@ class Public::OrdersController < ApplicationController
 
   def index
   end
-
-
 
 end
