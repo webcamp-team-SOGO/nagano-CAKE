@@ -1,7 +1,7 @@
 <h1>配送先編集</h1>
 <table>
   <tbody>
-    <%= form_with model: @delivery, url: delivery_path, local:true do |f| %>
+    <%= form_with model: @delivery, url: deliveries_path, local:true do |f| %>
     <tr>
       <td>郵便番号（ハイフンなし）</td>
       <td><%= f.text_field :postal_code, placeholder: "0000000", autofocus: true, autocomplete: "postal_code" %></td>
