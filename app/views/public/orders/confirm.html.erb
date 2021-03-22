@@ -1,4 +1,5 @@
 <h3>注文情報確認</h3>
+
   <table>
     <thead>
       <tr>
@@ -11,13 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @order_items.each do |order_item| %>
+      <%= @cart_items.each do |cart_item| %>
       <tr>
-        <td><%= attachment_image_tag order_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
-        <td><%= order_item.item.name %></td>
-        <td><%= order_item.price %></td>
-        <td><%= order_item.number %></td>
-        <td><%= order_item.price * order_item.number %></td>
+        <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
+        <td><%= cart_item.item.name %></td>
+        <td><%= cart_item.price %></td>
+        <td><%= cart_item.number %></td>
+        <td><%= cart_item.price * cart_item.number %></td>
       </tr>
       <% end %>
     </tbody>
@@ -26,15 +27,15 @@
     <tbody>
       <tr>
         <td>送料</td>
-        <td><%= @shipping %></td>
+        <td><%#= @shipping %></td>
       </tr>
       <tr>
         <td>商品合計</td>
-        <td><%= @tatal_payment %></td>
+        <td><%#= @tatal_payment %></td>
       </tr>
       <tr>
         <td>請求金額</td>
-        <td><%= @tatal_payments %></td>
+        <td><%#= @tatal_payments %></td>
       </tr>
     </tbody>
   </table>
@@ -55,7 +56,7 @@
       </tr>
       <tr>
         <td></td>
-        <td><%= @delivery.name %></td>
+        <td><%#=.name %></td>
       </tr>
     </tbody>
   </table>
