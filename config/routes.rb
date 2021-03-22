@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     # 注文
     post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
     get 'orders/:id' => 'orders#show', as: 'orders_show'
+    get 'orders/thanks' => 'orders#thanks', as: 'orders_thanks'
     # 会員の退会
     get 'confirm/:id' => 'customers#confirm', as: 'confirm_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
