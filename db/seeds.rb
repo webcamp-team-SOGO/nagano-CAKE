@@ -59,3 +59,9 @@ Order.create!(
       item_id: '1',
       number: '1'
       )
+
+   CartItem.create!(
+      customer_id: '1',
+      item_id: '1',
+      number: '2',
+      )

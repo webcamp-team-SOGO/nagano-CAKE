@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:index, :create, :update, :destroy, :edit]
     #get 'customer/confirm/:id' => 'orders#confirm', as: 'orders_confirm'
     get 'customer/confirm/:id' => 'orders#show', as: 'orders_show'
+    get 'orders/confirm/:id' => 'orders#confirm', as: 'orders_confirm'
     get 'confirm/:id' => 'customers#confirm', as: 'confirm_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
   end

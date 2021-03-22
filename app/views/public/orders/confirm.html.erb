@@ -1,5 +1,4 @@
 <h3>注文情報確認</h3>
-<div>
   <table>
     <thead>
       <tr>
@@ -8,17 +7,15 @@
         <th>数量</th>
         <th>小計</th>
         <th></th>
-        <th>送料</th>
-        <th><%= @order.shipping %></th>
       </tr>
     </thead>
     <tbody>
-      <% @cart_items.each do |cart_item| %>
+      <% @order_items.each do |order_item| %>
       <tr>
-        <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %><p><%= cart_item.item.name %></p></td>
-        <td><%= @taxfree %>)</td>
-        <td><%= item.count %></td>
-        <td><%= @taxfree %>)</td>
+        <td><%= attachment_image_tag order_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %><p><%#= order_item.item.name %></p></td>
+        <td><%= order_item.price %></td>
+        <td><%= order_item.number.count %></td>
+        <td><%#= @taxfree %></td>
       </tr>
       <% end %>
     </tbody>
@@ -26,18 +23,16 @@
   <table>
     <tbody>
       <tr>
-        <td>
-          <p>送料</p>
-          <%= @order.shipping %>
-        </td>
-        <td>
-          <p>商品合計</p>
-          
-        </td>
-        <td>
-          <p>請求金額</p>
-        </td>
+        <td>送料</td>
+        <td><%= @order.shipping %></td>
+      </tr>
+      <tr>
+        <td>商品合計</td>
+        <td><%= @order.total_payment %></td>
+      </tr>
+      <tr>
+        <td>請求金額</td>
+        <td><%= @order.total_payment + @order.shipping %></td>
       </tr>
     </tbody>
   </table>
-</div>

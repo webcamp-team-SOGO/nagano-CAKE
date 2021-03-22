@@ -6,14 +6,13 @@ class Public::OrdersController < ApplicationController
   def show
     #@cart_items = current_customer.cart_items
     @order = Order.find(params[:id])
-    
+
     @order_items = OrderItem.all
   end
 
   def confirm
-    #@cart_items = Cart_item.find(params[:id])
-    @item = @cart_items.item
-    @taxfree = (@item.taxfree * 1.1).round
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.find(params[:id])
   end
 
   def create
