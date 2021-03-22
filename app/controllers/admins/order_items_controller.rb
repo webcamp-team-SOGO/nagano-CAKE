@@ -5,7 +5,7 @@ before_action :authenticate_admin!
     @order_item = OrderItem.find(params[:id])
     @order_item.update(order_item.params)
     #flash[:success] = "更新に成功しました"
-      redirect_to request.referer
+      # redirect_to admins_order_path
   end
   private
   def order_item_params
