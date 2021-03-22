@@ -119,4 +119,6 @@ OrderItem.create!(
    making_status: 1,
    number: '2',
 )
+
 end
+

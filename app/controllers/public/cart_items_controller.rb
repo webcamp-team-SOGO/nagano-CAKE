@@ -32,7 +32,7 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
     #flash[:info] = 'カートを空にしました。'
   end
-  
+
   private
 
   def setup_cart_item!
