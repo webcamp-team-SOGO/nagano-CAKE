@@ -26,15 +26,37 @@
     <tbody>
       <tr>
         <td>送料</td>
-        <td><%= @order.shipping %></td>
+        <td><%= @shipping %></td>
       </tr>
       <tr>
         <td>商品合計</td>
-        <td><%= @order.total_payment %></td>
+        <td><%= @tatal_payment %></td>
       </tr>
       <tr>
         <td>請求金額</td>
-        <td><%= @order.total_payment + @order.shipping %></td>
+        <td><%= @tatal_payments %></td>
       </tr>
     </tbody>
   </table>
+  <table>
+    <thead>
+      <tr>
+        <td>支払い方法</td>
+        <td><%= @order.payment_method %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>お届け先</td>
+        <td>
+          〒<%= @order.postal_code %>
+          <%= @order.address %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= @delivery.name %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to "注文確定する", orders_thanks_path %>

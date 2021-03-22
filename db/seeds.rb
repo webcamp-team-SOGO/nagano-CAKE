@@ -104,7 +104,7 @@ end
 3.times do |n|
 OrderItem.create!(
    order_id: "2",
-   item_id: "#{n + 2}",
+   item_id: "#{n + 1}",
    price: '1500',
    making_status: 0,
    number: '3',
@@ -113,7 +113,7 @@ end
 
 6.times do |n|
 OrderItem.create!(
-   order_id: "#{n + 1}",
+   order_id: "3",
    item_id: "#{n + 1}",
    price: '2300',
    making_status: 1,

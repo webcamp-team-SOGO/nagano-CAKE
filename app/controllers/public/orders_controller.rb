@@ -11,10 +11,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    #byebug
+    @delivery = Delivery.find(params[:id])
     @order = Order.find(params[:id])
     @item = Item.find(params[:id])
     @order_items = @item.order_items
-    
+    @tatal_payment = OrderItem.sum(:price)
+    @shipping = @order.shipping
+    @tatal_payments = @tatal_payment + @shipping
   end
 
   def create
