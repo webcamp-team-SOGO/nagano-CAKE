@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show]
     resources :deliveries, only: [:index, :create, :update, :destroy, :edit]
-    # 注文
+
     post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
 
     #get 'orders/:id' => 'orders#show', as: 'orders_show'
@@ -40,10 +40,11 @@ Rails.application.routes.draw do
     #get 'orders/confirm/:id' => 'orders#confirm', as: 'orders_confirm_confirm'
     #get 'orders/:id' => 'orders#show', as: 'orders_show'
     #get 'orders/thanks' => 'orders#thanks', as: 'orders_thanks'
-
+    # 会員の退会
     get 'confirm/:id' => 'customers#confirm', as: 'confirm_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
   end
 
   delete 'customers/cart_items/destroy_all' => 'public/cart_items#destroy_all'
 end
+
