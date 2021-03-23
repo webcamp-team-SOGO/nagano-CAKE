@@ -1,8 +1,5 @@
 <h3>注文情報確認</h3>
 
-
-
-
   <table class="table">
     <thead>
       <tr>
@@ -16,15 +13,15 @@
     </thead>
     <tbody>
       <% @cart_items.each do |cart_item| %>
-      <%= form_with model: @order_item, url: orders_path, local: true do |f| %>
+
       <tr>
         <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
         <td><%= cart_item.item.name %></td>
-        <td><%= f.text_field :price, value: (cart_item.item.taxfree * 1.1).round.to_s(:delimited), readonly: true, class: "border border-0 border-primary" %></td>
-        <td><%= f.text_field :number, value: cart_item.number, readonly: true, class: "border border-0 border-primary" %></td>
+        <td><%= cart_item.taxfree *1.1 %></td>
+        <td><%= cart_item.number %></td>
         <td><%= cart_item.item.taxfree * 1.1 * cart_item.number %></td>
       </tr>
-      <% end %>
+
       <% end %>
     </tbody>
   </table>
@@ -48,8 +45,6 @@
     </tbody>
   </table>
 
-
-
   <table class="table">
     <thead>
       <tr>
@@ -68,7 +63,6 @@
       </tr>
     </tbody>
   </table>
-
 
 
   <%= f.hidden_field :payment_method, value:@order.payment_method %>
