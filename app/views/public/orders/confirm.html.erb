@@ -21,7 +21,7 @@
       <tr>
         <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
         <td><%= cart_item.item.name %></td>
-        <td><%= cart_item.taxfree *1.1 %></td>
+        <td><%= cart_item.item.taxfree * 1.1 %></td>
         <td><%= cart_item.number %></td>
         <td><%= cart_item.item.taxfree * 1.1 * cart_item.number %></td>
       </tr>
@@ -49,7 +49,7 @@
       </tr>
       <tr>
         <td>請求金額</td>
-        <td><%= %></td>
+        <td><%= converting_to_jpy(@total_payment + 800) %></td>
       </tr>
     </tbody>
   </table>
