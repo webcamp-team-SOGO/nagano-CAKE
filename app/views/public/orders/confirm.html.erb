@@ -13,7 +13,6 @@
     </thead>
     <tbody>
       <% @cart_items.each do |cart_item| %>
-      <%= form_with model: @order_item, url: orders_path, local: true do |f| %>
       <tr>
         <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
         <td><%= cart_item.item.name %></td>
@@ -65,6 +64,4 @@
   <%= f.hidden_field :address, value:@order.address %>
   <%= f.hidden_field :name, value:@order.name %>
   <%= f.submit "注文を確定する" ,class: 'btn btn-sm btn-success' %>
-<%# end %>
-<% end %>
 <% end %>

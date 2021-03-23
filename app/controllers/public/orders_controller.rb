@@ -13,10 +13,19 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.find_or_initialize_by(id: params[:id])
-    @order.assign_attributes(order_params)
-    @order_item = OrderItem.find_or_initialize_by(id: params[:id])
-    @order_item.assign_attributes(order_item_params)
+    @order = Order.new(customer_id: current_customer, payment_method: params[:order][:payment_method])
+    #@address = Delivery.find(params[:order][:delivery_id])
+    if params[:order][:adress_option] == "0"
+      @order.adress = current_customer.adress
+      @order.postal_code = current_customer.postal_code
+      @order.name = current_customer.last_name + first_name
+    elsif params[:order][:adress_option] == "1"
+      @order.adress = @address.address
+      @order.postal_code = @address.postal_code
+      @order.name = @address.name
+    elsif params[:order][:adress_option] == "2"
+      @order = Order.new(order_params)
+    end
     @customer = current_customer
     @cart_items = @customer.cart_items
     @total_payment = (@cart_items.to_a.sum{|x| x.item.taxfree * x.number} * 1.1).floor.to_s(:delimited)
@@ -39,11 +48,11 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:name, :postal_code, :address, :payment_method, :shipping, :total_payment )
+    params.require(:order).permit(:name, :postal_code, :address, :payment_method, :shipping, :total_payment )
   end
 
   def order_item_params
-    params.permit(:number, :price )
+    params.require(:order_item).permit(:number, :price )
   end
 
 end

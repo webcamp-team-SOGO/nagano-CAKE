@@ -23,7 +23,7 @@
   <div class="row mt-3 form-check">
     <%= f.radio_button :address, @deliveries %>
     <%= f.label :address, '登録済み住所から選択' %><br />
-    <%= f.collection_select(:delivery_id, @deliveries, :id, :address, {prompt: "--選択してください--"}) %>
+    <%= f.collection_select(:delivery_id, @deliveries, :id, :deliveries, {prompt: "--選択してください--"}) %>
   </div>
   <div class="row mt-3 form-check">
     <%= f.radio_button :address, "new_address" %>
