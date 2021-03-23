@@ -51,7 +51,7 @@
       <table class="table table-bordered shadow">
         <tr>
           <th class="bg-secondary text-light">合計金額</th>
-          <td class="font-weight-bold"><%= (@cart_items.to_a.sum{|x| x.item.taxfree * x.number} * 1.1).floor.to_s(:delimited) %></td>
+          <td class="font-weight-bold"><%= (@cart_items.to_a.sum{|n| n.item.taxfree * n.number} * 1.1).floor.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
