@@ -32,21 +32,22 @@ class Public::OrdersController < ApplicationController
     @order_item = OrderItem.new
     @customer = current_customer
     @cart_items = @customer.cart_items
+
     array = []
     @cart_items.all.each do |cart_item|
     array << (cart_item.item.taxfree * cart_item.number * 1.1)
-
     end
+
     @total_payment = array.sum
 
-    # @total_payment = (@cart_items.to_a.sum{|x| x.cart_item.item.taxfree * x.number} * 1.1).floor.to_s(:delimited)
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.save
     @customer = current_customer
+    @order = Order.new(customer_id: current_customer, payment_method: params[:order][:payment_method])
+    @order.save
     @cart_items = @customer.cart_items
+
     @cart_items.each do |cart_item|
       OrderItem.create(
         order_id: @order.id,
@@ -55,7 +56,6 @@ class Public::OrdersController < ApplicationController
         number: cart_item.number
         )
     end
-
     redirect_to order_thanks_path
   end
 
@@ -70,7 +70,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :postal_code, :address, :payment_method, :shipping, :total_payment)
+    params.require(:order).permit(:name, :postal_code, :address, :payment_method, :shipping, :total_payment, :customer_id)
   end
 
   def order_item_params
