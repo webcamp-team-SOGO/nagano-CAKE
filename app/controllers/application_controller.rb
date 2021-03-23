@@ -6,13 +6,13 @@ class ApplicationController < ActionController::Base
 def after_sign_in_path_for(resource)
   case resource
   when Admin
-    admins_items_path
-  when Customer # ログイン後トップに移動
+    admins_orders_path(order_sort: 0)
+  when Customer
     root_path
   end
 end
 
-# ログアウト後トップに移動
+
 def after_sign_out_path_for(resource)
   root_path
 end
