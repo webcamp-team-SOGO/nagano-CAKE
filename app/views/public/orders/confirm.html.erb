@@ -1,6 +1,10 @@
 <h3>注文情報確認</h3>
 
+
   <table class="table">
+
+  <table>
+
     <thead>
       <tr>
         <th>商品名</th>
@@ -26,9 +30,14 @@
     </tbody>
   </table>
 
+
 <%= form_with model: @order, url: orders_path, local: true do |f| %>
 
   <table class="table">
+
+
+  <table>
+
     <tbody>
       <tr>
         <td>送料</td>
@@ -46,6 +55,7 @@
   </table>
 
   <table class="table">
+
     <thead>
       <tr>
         <td>支払い方法</td>
@@ -56,18 +66,20 @@
       <tr>
         <td>お届け先</td>
         <td>
-        〒<%= @order.postal_code %>
-          <%= @order.address %></br>
+
+          〒<%= @order.postal_code %><%= @order.address %></br>
+
           <%= @order.name %>
         </td>
       </tr>
     </tbody>
   </table>
 
-
   <%= f.hidden_field :payment_method, value:@order.payment_method %>
   <%= f.hidden_field :postal_code, value:@order.postal_code %>
   <%= f.hidden_field :address, value:@order.address %>
   <%= f.hidden_field :name, value:@order.name %>
   <%= f.submit "注文を確定する" ,class: 'btn btn-sm btn-success' %>
+
 <% end %>
+
