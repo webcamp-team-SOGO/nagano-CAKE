@@ -16,22 +16,27 @@
     </thead>
     <tbody>
       <% @cart_items.each do |cart_item| %>
-      <%= form_with model: @order_item, url: orders_path, local: true do |f| %>
+
       <tr>
         <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
         <td><%= cart_item.item.name %></td>
-        <td><%= f.text_field :price, value: (cart_item.item.taxfree * 1.1).round.to_s(:delimited), readonly: true, class: "border border-0 border-primary" %></td>
-        <td><%= f.text_field :number, value: cart_item.number, readonly: true, class: "border border-0 border-primary" %></td>
-        <td><%= cart_item.item.taxfree * 1.1 * cart_item.number %></td>
+        <td><%= (cart_item.item.taxfree * 1.1).round.to_s(:delimited) %></td>
+        <td><%= cart_item.number %></td>
+        <td><%= (cart_item.item.taxfree * 1.1 * cart_item.number).round.to_s(:delimited) %></td>
       </tr>
-      <% end %>
+
       <% end %>
     </tbody>
   </table>
 
+
 <%= form_with model: @order, url: orders_path, local: true do |f| %>
 
   <table class="table">
+
+
+  <table>
+
     <tbody>
       <tr>
         <td>送料</td>
@@ -39,18 +44,17 @@
       </tr>
       <tr>
         <td>商品合計</td>
-        <td><%= f.text_field :total_payment, value: @total_payment, readonly: true, class: "border border-0 border-primary" %></td>
+        <td><%= f.text_field :total_payment, value: converting_to_jpy(@total_payment.to_i), readonly: true, class: "border border-0 border-primary" %></td>
       </tr>
       <tr>
         <td>請求金額</td>
-        <td><%= %></td>
+        <td><%= converting_to_jpy(@total_payment.to_i + 800) %></td>
       </tr>
     </tbody>
   </table>
 
-
-
   <table class="table">
+
     <thead>
       <tr>
         <td>支払い方法</td>
@@ -61,8 +65,9 @@
       <tr>
         <td>お届け先</td>
         <td>
-        〒<%= @order.postal_code %>
-          <%= @order.address %></br>
+
+          〒<%= @order.postal_code %><%= @order.address %></br>
+
           <%= @order.name %>
         </td>
       </tr>
@@ -70,10 +75,10 @@
   </table>
 
 
-
   <%= f.hidden_field :payment_method, value:@order.payment_method %>
   <%= f.hidden_field :postal_code, value:@order.postal_code %>
   <%= f.hidden_field :address, value:@order.address %>
   <%= f.hidden_field :name, value:@order.name %>
+  <%= f.hidden_field :customer_id, value:@customer.id %>
   <%= f.submit "注文を確定する" ,class: 'btn btn-sm btn-success' %>
 <% end %>
