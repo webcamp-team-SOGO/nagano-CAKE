@@ -35,16 +35,17 @@ class Public::OrdersController < ApplicationController
 
     array = []
     @cart_items.all.each do |cart_item|
-    array << (cart_item.item.taxfree * cart_item.number * 1.1)
+      array << (cart_item.item.taxfree * cart_item.number * 1.1)
     end
 
     @total_payment = array.sum
+    #@total_payment = (@cart_items.to_a.sum{|x| x.item.taxfree * x.number} * 1.1).floor.to_s(:delimited)
 
   end
 
   def create
     @customer = current_customer
-    @order = Order.new(customer_id: current_customer, payment_method: params[:order][:payment_method])
+    @order = Order.new(order_params)
     @order.save
     @cart_items = @customer.cart_items
 
@@ -56,6 +57,9 @@ class Public::OrdersController < ApplicationController
         number: cart_item.number
         )
     end
+
+    @cart_items.destroy_all
+
     redirect_to order_thanks_path
   end
 

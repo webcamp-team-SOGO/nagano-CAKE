@@ -4,6 +4,4 @@ class Delivery < ApplicationRecord
   def deliveries
     self.postal_code + self.address + self.name
   end
-
-
 end
