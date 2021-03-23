@@ -9,34 +9,3 @@
 <% end %>
 
 
-  <div class="row mt-3">
-    <h5 class="font-weight-bold">お届け先</h4>
-  </div>
-  <div class="row mt-3 form-check">
-    <%= f.radio_button :delivery_address, "customer_address", checked: true %>
-    <%= f.label :delivery_address, 'ご自身のご住所' %><br />
-  〒<%= current_customer.postal_code %> <%= current_customer.address %><br />
-    <%= current_customer.last_name %> <%= current_customer.first_name %>
-  </div>
-
-  <div class="row mt-3 form-check">
-    <%= f.radio_button :delivery_address, 'delivery_address' %>
-    <%= f.label :delivery_address, '登録済み住所から選択' %><br />
-    <%= f.collection_select(:delivery_id, Delivery.all, :id, :address, {prompt: "--選択してください--"}) %>
-  </div>
-  <div class="row mt-3 form-check">
-    <%= f.radio_button :delivery_address, "new_address" %>
-    <%= f.label :delivery_address, '新しいお届け先' %>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <p>郵便番号（ハイフンなし）</p>
-      <p>住所</p>
-      <p>宛名</p>
-    </div>
-    <div class="col-9 form-group">
-      <%= f.text_field :postal_code, placeholder: '郵便番号', class: 'form-control col-sm-3' %>
-      <%= f.text_field :address, placeholder: '住所', class: 'form-control col-sm-5' %>
-      <%= f.text_field :name, placeholder: '名前', class: 'form-control col-sm-3' %>
-    </div>
-  </div>

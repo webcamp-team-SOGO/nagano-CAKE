@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def new
+    @customer = current_customer
     @order = Order.new
     @deliveries = Delivery.where(customer: current_customer)
   end
@@ -18,18 +19,16 @@ class Public::OrdersController < ApplicationController
     @order_item.assign_attributes(order_item_params)
     @customer = current_customer
     @cart_items = @customer.cart_items
+    @total_payment = (@cart_items.to_a.sum{|x| x.item.taxfree * x.number} * 1.1).floor.to_s(:delimited)
   end
 
   def create
     #byebug
     @order = Order.new(order_params)
-    @order.save
     @order_item = OrderItem.new(order_item_params)
+    @order.save
     @order_item.save
-    redirect_to root_path
-  end
-
-  def thanks
+    redirect_to homes_thanks_path
   end
 
   def index
@@ -40,7 +39,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:name, :postal_code, :address, :payment_method, :delivery_address)
+    params.permit(:name, :postal_code, :address, :payment_method, :shipping, :total_payment )
   end
 
   def order_item_params
