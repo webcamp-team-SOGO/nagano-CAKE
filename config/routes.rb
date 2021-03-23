@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show]
     resources :deliveries, only: [:index, :create, :update, :destroy, :edit]
-    # 注文
+
     post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
     get 'order/thanks' => 'orders#thanks', as: 'order_thanks'
     # 会員の退会
