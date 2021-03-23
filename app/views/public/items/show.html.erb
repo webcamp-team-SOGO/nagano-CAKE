@@ -5,9 +5,9 @@
     </div>
 
     <div class="mt-5 col-md-5">
-      <p><%= @item.name %></p> 
+      <p><%= @item.name %></p>
       <p><%= @item.introduction %></p>
-      <p>¥<%= (@item.taxfree).to_s(:delimited) %>（税込）</p>
+      <p>¥<%= (@item.taxfree) %>（税込）</p>
       <% if @item.is_valid == false %>
         <div><%= "Sold Out" %></div>
       <% else %>

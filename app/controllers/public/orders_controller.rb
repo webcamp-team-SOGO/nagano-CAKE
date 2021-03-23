@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @customer = current_customer
     @deliveries = Delivery.where(customer: current_customer)
   end
 
@@ -14,19 +15,20 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.find_or_initialize_by(id: params[:id])
     @order.assign_attributes(order_params)
-    @order_item = OrderItem.find_or_initialize_by(id: params[:id])
-    @order_item.assign_attributes(order_item_params)
+    # @order_item = OrderItem.find_or_initialize_by(id: params[:id])
+    @order_item = OrderItem.new
+    # @order_item.assign_attributes(order_item_params)
     @customer = current_customer
     @cart_items = @customer.cart_items
+    @total_payment = (@cart_items.to_a.sum{|x| x.item.taxfree * x.number} * 1.1).floor.to_s(:delimited)
   end
 
   def create
-    #byebug
     @order = Order.new(order_params)
     @order.save
     @order_item = OrderItem.new(order_item_params)
     @order_item.save
-    redirect_to root_path
+    redirect_to order_thanks_path
   end
 
   def thanks
@@ -40,7 +42,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:name, :postal_code, :address, :payment_method, :delivery_address)
+    params.require(:order).permit(:name, :postal_code, :address, :payment_method, :shipping, :total_payment)
   end
 
   def order_item_params

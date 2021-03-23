@@ -1,8 +1,9 @@
-<%= form_with(model: [@order, @order_item], url: orders_path, local: true) do |f| %>
-
 <h3>注文情報確認</h3>
 
-  <table>
+
+
+
+  <table class="table">
     <thead>
       <tr>
         <th>商品名</th>
@@ -15,54 +16,64 @@
     </thead>
     <tbody>
       <% @cart_items.each do |cart_item| %>
+      <%= form_with model: @order_item, url: orders_path, local: true do |f| %>
       <tr>
         <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
         <td><%= cart_item.item.name %></td>
-        <td><%= (cart_item.item.taxfree * 1.1).round.to_s(:delimited)%></td>
-        <td><%= cart_item.number %></td>
-        <td><%= cart_item.item.taxfree * cart_item.number %></td>
+        <td><%= f.text_field :price, value: (cart_item.item.taxfree * 1.1).round.to_s(:delimited), readonly: true, class: "border border-0 border-primary" %></td>
+        <td><%= f.text_field :number, value: cart_item.number, readonly: true, class: "border border-0 border-primary" %></td>
+        <td><%= cart_item.item.taxfree * 1.1 * cart_item.number %></td>
       </tr>
+      <% end %>
       <% end %>
     </tbody>
   </table>
 
+<%= form_with model: @order, url: orders_path, local: true do |f| %>
 
-
-  <table>
+  <table class="table">
     <tbody>
       <tr>
         <td>送料</td>
-        <td><%#= shipping %></td>
+        <td><%= f.text_field :shipping, value: 800, readonly: true, class: "border border-0 border-primary" %></td>
       </tr>
       <tr>
         <td>商品合計</td>
-        <td><%#= .tatal_payment %></td>
+        <td><%= f.text_field :total_payment, value: @total_payment, readonly: true, class: "border border-0 border-primary" %></td>
       </tr>
       <tr>
         <td>請求金額</td>
-        <td><%#=  %></td>
+        <td><%= %></td>
       </tr>
     </tbody>
   </table>
 
 
 
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <td>支払い方法</td>
-        <td><%= f.text_field :payment_method %><%= f.hidden_field :payment_method %></td>
+        <td><%= @order.payment_method %></td>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>お届け先</td>
         <td>
-          〒<%= @order.postal_code %><%= f.hidden_field :postal_code %><%= @order.address %><%= f.hidden_field :address %></br>
-          <%= @order.name %><%= f.hidden_field :name %>
+        〒<%= @order.postal_code %>
+          <%= @order.address %></br>
+          <%= @order.name %>
         </td>
       </tr>
     </tbody>
   </table>
+
+
+
+  <%= f.hidden_field :payment_method, value:@order.payment_method %>
+  <%= f.hidden_field :postal_code, value:@order.postal_code %>
+  <%= f.hidden_field :address, value:@order.address %>
+  <%= f.hidden_field :name, value:@order.name %>
   <%= f.submit "注文を確定する" ,class: 'btn btn-sm btn-success' %>
 <% end %>

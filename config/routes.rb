@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     # 注文
     post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
     #get 'orders/:id' => 'orders#show', as: 'orders_show'
-    get 'orders/thanks' => 'orders#thanks', as: 'orders_thanks'
+    get 'order/thanks' => 'orders#thanks', as: 'order_thanks'
     #get 'orders/confirm/:id' => 'orders#confirm', as: 'orders_confirm_confirm'
     #get 'orders/:id' => 'orders#show', as: 'orders_show'
     #get 'orders/thanks' => 'orders#thanks', as: 'orders_thanks'
