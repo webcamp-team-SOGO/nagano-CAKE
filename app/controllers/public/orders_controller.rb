@@ -28,7 +28,7 @@ class Public::OrdersController < ApplicationController
     @order.save
     @order_item = OrderItem.new(order_item_params)
     @order_item.save
-    redirect_to order_thanks_path
+    redirect_to orders_thanks_path
   end
 
   def thanks
