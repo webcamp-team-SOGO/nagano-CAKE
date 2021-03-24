@@ -44,18 +44,21 @@ class Public::OrdersController < ApplicationController
   def create
     @customer = current_customer
     @order = Order.new(order_params)
-    @order.save
-    @cart_items = @customer.cart_items
-    @cart_items.each do |cart_item|
-      OrderItem.create(
-        order_id: @order.id,
-        item_id: cart_item.item.id,
-        price: cart_item.item.taxfree * 1.1,
-        number: cart_item.number
-        )
+    if  @order.save
+        @cart_items = @customer.cart_items
+        @cart_items.each do |cart_item|
+          OrderItem.create(
+            order_id: @order.id,
+            item_id: cart_item.item.id,
+            price: cart_item.item.taxfree * 1.1,
+            number: cart_item.number
+            )
+        end
+      @cart_items.destroy_all
+      redirect_to order_thanks_path
+    else
+      render 
     end
-    @cart_items.destroy_all
-    redirect_to order_thanks_path
   end
 
   def thanks
