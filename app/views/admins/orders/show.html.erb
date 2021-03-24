@@ -1,4 +1,7 @@
 <h4>注文履歴詳細</h4>
+<div class="alert alert-success	">
+  <%= flash[:notice] %><button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
 <div class='row'>
   <div class="col-sm-3">
     <div class="form-inline">
@@ -65,7 +68,7 @@
         <div class="group">
         <div class="form-inline">
           <label class>商品合計</label>
-          <div><%= converting_to_jpy(@order.total_payment) %>円</div>
+          <div><%= converting_to_jpy(@order.total_payment.to_i) %>円</div>
         </div>
       </div><br>
       <div class="group">
