@@ -2,8 +2,9 @@
 
 <%= render 'layouts/errors', obj: @customer %>
 
+<%= form_with model: @customer, local:true do |f| %>
+
 <table>
-  <%= form_with model: @customer, local:true do |f| %>
   <thead>
     <tr>
       <td>氏名</td>
@@ -44,5 +45,5 @@
       <td><%= link_to "退会", confirm_confirm_path %></td>
     </tr>
   </tbody>
-  <% end %>
 </table>
+<% end %>

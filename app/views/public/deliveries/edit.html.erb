@@ -2,9 +2,10 @@
 
 <%= render 'layouts/errors', obj: @delivery %>
 
+<%= form_with model: @delivery, url: delivery_path, local:true do |f| %>
+
 <table>
   <tbody>
-    <%= form_with model: @delivery, url: delivery_path, local:true do |f| %>
     <tr>
       <td>郵便番号（ハイフンなし）</td>
       <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
