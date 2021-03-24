@@ -65,7 +65,7 @@
         <div class="group">
         <div class="form-inline">
           <label class>商品合計</label>
-          <div><%= converting_to_jpy(@order.total_payment) %>円</div>
+          <div><%= converting_to_jpy(@order.total_payment.to_i) %>円</div>
         </div>
       </div><br>
       <div class="group">
