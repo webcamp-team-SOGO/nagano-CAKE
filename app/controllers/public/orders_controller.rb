@@ -34,7 +34,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = @customer.cart_items
     array = []
     @cart_items.all.each do |cart_item|
-      array << (cart_item.item.taxfree * cart_item.number * 1.1).round.to_s(:delimited)
+      array << (cart_item.item.taxfree * cart_item.number * 1.1)
     end
 
     @total_payment = array.sum

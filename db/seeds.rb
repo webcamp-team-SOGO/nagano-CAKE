@@ -75,7 +75,6 @@ end
  Order.create!(
    customer_id: "#{n + 1}",
    shipping: '800',
-   total_payment: '2500',
    payment_method: 0,
    name: 'test太郎',
    postal_code: '111-1111',
