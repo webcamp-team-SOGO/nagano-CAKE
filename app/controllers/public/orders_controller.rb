@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = OrderItem.all
+    @order_items = @order.order_items
   end
 
   def confirm
@@ -32,33 +32,31 @@ class Public::OrdersController < ApplicationController
     @order_item = OrderItem.new
     @customer = current_customer
     @cart_items = @customer.cart_items
+
     array = []
     @cart_items.all.each do |cart_item|
       array << (cart_item.item.taxfree * cart_item.number * 1.1)
     end
 
     @total_payment = array.sum
-    #@total_payment = (@cart_items.to_a.sum{|x| x.item.taxfree * x.number} * 1.1).floor.to_s(:delimited)
+
   end
 
   def create
     @customer = current_customer
     @order = Order.new(order_params)
-    if  @order.save
-        @cart_items = @customer.cart_items
-        @cart_items.each do |cart_item|
-          OrderItem.create(
-            order_id: @order.id,
-            item_id: cart_item.item.id,
-            price: cart_item.item.taxfree * 1.1,
-            number: cart_item.number
-            )
-        end
-      @cart_items.destroy_all
-      redirect_to order_thanks_path
-    else
-      render 
+    @order.save
+    @cart_items = @customer.cart_items
+    @cart_items.each do |cart_item|
+    OrderItem.create(
+      order_id: @order.id,
+      item_id: cart_item.item.id,
+      price: cart_item.item.taxfree * 1.1,
+      number: cart_item.number
+      )
     end
+     @cart_items.destroy_all
+    redirect_to order_thanks_path
   end
 
   def thanks
@@ -76,7 +74,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def order_item_params
-    params.permit(:number, :price)
+    params.require(:order_item).permit(:number, :price)
   end
 
 end

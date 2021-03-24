@@ -2,7 +2,6 @@ class Admins::OrdersController < ApplicationController
 before_action :authenticate_admin!
 
   def index
-
     case params[:order_sort]
 
     when "0"
@@ -16,16 +15,21 @@ before_action :authenticate_admin!
 
   def show
     @order = Order.find(params[:id])
-    @order_items = OrderItem.all
+    @order_items = @order.order_items
   end
 
   def update
-    @order = Order.find(params[:id]) 
-    @order.update(order_params)
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
     # flash[:success] = "更新に成功しました"
-    redirect_to admins_order_path
+     flash[:notice] = "更新に成功しました。"
+     redirect_to request.referer
+    else
+      flash[:notice] = "更新に失敗しました。"
+     redirect_to admins_order_path
+    end
   end
-  
+
   private
   def order_params
   	params.require(:order).permit(:status)
