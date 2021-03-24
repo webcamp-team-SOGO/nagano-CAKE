@@ -44,11 +44,11 @@
       </tr>
       <tr>
         <td>商品合計</td>
-        <td><%= f.text_field :total_payment, value: number_with_delimiter(, readonly: true, class: "border border-0 border-primary" %></td>
+        <td><%= f.text_field :total_payment, value: converting_to_jpy(@total_payment.to_i), readonly: true, class: "border border-0 border-primary" %></td>
       </tr>
       <tr>
         <td>請求金額</td>
-        <td><%= converting_to_jpy(@total_payment.to_i + 8000) %></td>
+        <td><%= converting_to_jpy(@total_payment.to_i + 800) %></td>
       </tr>
     </tbody>
   </table>
