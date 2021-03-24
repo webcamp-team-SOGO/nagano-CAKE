@@ -26,5 +26,13 @@ ja:
         introduction: 商品説明
         taxfree: 税抜価格
 
+ja:
+  views:
+      pagination:
+        first: '最初'
+        last: '最後'
+        previous: '前'
+        next: '次'
+        truncate: '...'
 
 

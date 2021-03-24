@@ -5,10 +5,10 @@ before_action :authenticate_admin!
     case params[:order_sort]
 
     when "0"
-     @orders = Order.page(params[:page]).per(10)
+     @orders = Order.all.order(created_at: :desc).page(params[:page]).per(10)
     else
      @customer = Customer.find(params[:id])
-     @orders = @customer.orders.page(params[:page]).per(10)
+     @orders = @customer.orders.order(created_at: :desc).page(params[:page]).per(10)
     end
 
   end
@@ -22,7 +22,6 @@ before_action :authenticate_admin!
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
-    # flash[:success] = "更新に成功しました"
      flash[:notice] = "更新に成功しました。"
      redirect_to request.referer
     else
