@@ -23,9 +23,10 @@ before_action :authenticate_admin!
     @order = Order.find(params[:id])
     if @order.update(order_params)
     # flash[:success] = "更新に成功しました"
-     redirect_to request.referer,notice: '更新に成功しました'
+     flash[:notice] = "更新に成功しました。"
+     redirect_to request.referer
     else
-     flash.now[:alert] = '更新に失敗しました。'
+      flash[:notice] = "更新に失敗しました。"
      redirect_to admins_order_path
     end
   end
