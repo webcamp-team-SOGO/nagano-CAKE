@@ -2,31 +2,33 @@
   <div class="row">
     <h4 class=" my-4 px-3 py-2">管理者ログイン</h4>
   </div>
+  
+  
+  <%= form_with model:@admin, url: admin_session_path, local: true do |f| %>
+<div class="row mt-3 ml-5">
+  <div class="col-lg-8">
+    <table class="table table-borderless">
+      <thead>
+        <tr class="mr-3">
+          <th ><%= f.label "メールアドレス" %></th>
+          <th class=><%= f.email_field :email, size: 50, placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></th>
+        </tr>
+        <tr>
+          <th><%= f.label "パスワード" %></th>
+          <th><%= f.password_field :password, size: 50, autocomplete: "current-password" %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>
+            <div class="actions">
+            <%= f.submit "ログイン", class:"btn btn-primary" %>
+            </div>
+          </th>
+        </tr>
+      </thead>
+    </table>
+  <% end %>
+</div>
 </div>
 
 
-<%= form_with model:@admin, url: admin_session_path, local: true do |f| %>
-<div class="row col-lg-6 mx-auto">
-  <table>
-    <thead>
-      <tr>
-        <th ><%= f.label "メールアドレス" %></th>
-        <th class="field mb-3"><%= f.email_field :email, size: 50, placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></th>
-      </tr>
-      <tr>
-        <th><%= f.label "パスワード" %></th>
-        <th><%= f.password_field :password, size: 50, autocomplete: "current-password" %></th>
-      </tr>
-      <tr>
-        <th></th>
-        <th>
-          <div class="actions">
-          <%= f.submit "ログイン", class:"btn btn-primary" %>
-          </div>
-        </th>
-      </tr>
-    </thead>
-  </table>
-<% end %>
-
-</div>
