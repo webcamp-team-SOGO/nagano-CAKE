@@ -8,7 +8,7 @@ before_action :authenticate_admin!
      @orders = Order.page(params[:page]).per(10)
     else
      @customer = Customer.find(params[:id])
-     @orders = Customer.order.page(params[:page]).per(10)
+     @orders = @customer.orders.page(params[:page]).per(10)
     end
 
   end

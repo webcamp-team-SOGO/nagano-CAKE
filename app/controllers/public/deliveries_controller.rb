@@ -31,6 +31,7 @@ class Public::DeliveriesController < ApplicationController
     if @delivery.update(delivery_params)
       redirect_to deliveries_path
     else
+      @deliveries = current_customer.deliveries
       render :index
     end
   end
@@ -39,9 +40,9 @@ class Public::DeliveriesController < ApplicationController
   def delivery_params
     params.require(:delivery).permit(:postal_code, :address, :name)
   end
-  
+
   def set_delivery
     @delivery = Delivery.find(params[:id])
   end
-  
+
 end
