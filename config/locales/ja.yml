@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      customer: 会員
+      delivery: 配送先
+      genre: ジャンル
+      item: 商品
+    attributes:
+      customer:
+        last_name: 名字
+        first_name: 名前
+        k_last_name: 名字のフリガナ
+        k_first_name: 名前のフリガナ
+        email: メールアドレス
+        postal_code: 郵便番号
+        address: 住所
+        telephone_number: 電話番号
+      delivery:
+        name: 宛名
+        address: 住所
+        postal_code: 郵便番号
+      genre:
+        name: ジャンル名
+      item:
+        name: 商品名
+        introduction: 商品説明
+        taxfree: 税抜価格
+
+
+
