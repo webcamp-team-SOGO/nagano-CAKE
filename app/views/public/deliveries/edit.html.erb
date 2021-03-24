@@ -1,18 +1,19 @@
 <h1>配送先編集</h1>
+<%= render 'layouts/errors', obj: @delivery %>
 <%= form_with model: @delivery, url: delivery_path, local:true do |f| %>
 <table>
   <tbody>
     <tr>
       <td>郵便番号（ハイフンなし）</td>
-      <td><%= f.text_field :postal_code, placeholder: "0000000", autofocus: true, autocomplete: "postal_code" %></td>
+      <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
     </tr>
     <tr>
       <td>住所</td>
-      <td><%= f.text_field :address, placeholder: "東京都渋⾕区代々⽊神園町0-0", autofocus: true, autocomplete: "address" %></td>
+      <td><%= f.text_field :address, autocomplete: "address" %></td>
     </tr>
     <tr>
       <td>宛名</td>
-      <td><%= f.text_field :name, placeholder: "平成太郎", autofocus: true, autocomplete: "name" %></td>
+      <td><%= f.text_field :name, autocomplete: "name" %></td>
     </tr>
   </tbody>
 </table>

@@ -12,7 +12,8 @@ class Public::DeliveriesController < ApplicationController
     if @delivery.save
       redirect_to deliveries_path
     else
-      render:index
+      @deliveries = current_customer.deliveries
+      render :index
     end
   end
 
@@ -31,8 +32,7 @@ class Public::DeliveriesController < ApplicationController
     if @delivery.update(delivery_params)
       redirect_to deliveries_path
     else
-      @deliveries = current_customer.deliveries
-      render :index
+      render :edit
     end
   end
 

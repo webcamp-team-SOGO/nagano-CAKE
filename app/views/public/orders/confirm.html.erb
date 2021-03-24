@@ -20,7 +20,9 @@
       <tr>
         <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
         <td><%= cart_item.item.name %></td>
+
         <td><%= (cart_item.item.taxfree * 1.1).round.to_s(:delimited) %></td>
+
         <td><%= cart_item.number %></td>
         <td><%= (cart_item.item.taxfree * 1.1 * cart_item.number).round.to_s(:delimited) %></td>
       </tr>
@@ -48,7 +50,9 @@
       </tr>
       <tr>
         <td>請求金額</td>
+
         <td><%= converting_to_jpy(@total_payment.to_i + 800) %></td>
+
       </tr>
     </tbody>
   </table>
@@ -74,6 +78,8 @@
     </tbody>
   </table>
 
+
+  <%= f.hidden_field :customer_id, value:@customer.id %>
 
   <%= f.hidden_field :payment_method, value:@order.payment_method %>
   <%= f.hidden_field :postal_code, value:@order.postal_code %>

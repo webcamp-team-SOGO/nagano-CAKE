@@ -7,15 +7,18 @@
     <div class="mt-5 col-md-5">
       <p><%= @item.name %></p>
       <p><%= @item.introduction %></p>
-      <p>¥<%= (@item.taxfree) %>（税込）</p>
-      <% if @item.is_valid == false %>
-        <div><%= "Sold Out" %></div>
-      <% else %>
+      <p>¥<%= (@item.taxfree * 1.1).round.to_s(:delimited) %>（税込）</p>
+
+      <% if @item.is_valid == true && customer_signed_in? == true %>
         <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
         <%= f.select :number, options_for_select((1..100).to_a), include_blank: "個数選択" %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.submit "カートに入れる"%>
         <% end %>
+      <% elsif @item.is_valid == true && customer_signed_in? == false %>
+        <div><%= "会員登録後にご購入頂けます" %></div>
+      <% else %>
+        <div><%= "Sold Out" %></div>
       <% end %>
     </div>
   </div>
