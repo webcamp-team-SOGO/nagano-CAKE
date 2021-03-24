@@ -39,7 +39,6 @@ class Public::OrdersController < ApplicationController
     end
 
     @total_payment = array.sum
-    #@total_payment = (@cart_items.to_a.sum{|x| x.item.taxfree * x.number} * 1.1).floor.to_s(:delimited)
 
   end
 
