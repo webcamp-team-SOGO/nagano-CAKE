@@ -1,41 +1,45 @@
 <div class='row'>
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h3 class="bg-light">商品新規登録</h3>
+  <div class="col-md-6">
+    <h4 class="text-center">商品新規登録</h4>
+    </div>
+</div>
+<div class='row'>
+  <div class="col-md-8 offset-md-2">
     <%= render 'layouts/errors', obj: @item %>
       <%= form_with model: @item, url: admins_items_path, method: :post, local:true do |f| %>
       <div class="form-inline">
-        <label class="col-sm-4">商品画像</label>
-        <div class="col-sm-8 form-inline">
+        <label class="col-sm-5">商品画像</label>
+        <div class="col-sm-7 form-inline">
           <%= f.file_field :image %>
         </div>
       </div><br>
       <div class="form-inline">
-        <label class="col-sm-4">商品名</label>
-        <div class="col-sm-8 form-inline">
+        <label class="col-sm-5">商品名</label>
+        <div class="col-sm-7 form-inline">
           <%= f.text_field :name, :placeholder => "商品名" %>
         </div>
       </div><br>
       <div class="form-inline">
-        <label class="col-sm-4">商品説明</label>
-        <div class="col-sm-8 form-inline">
+        <label class="col-sm-5">商品説明</label>
+        <div class="col-sm-7 form-inline">
           <%= f.text_area :introduction, :placeholder => "ここに説明文を記述します" %>
         </div>
       </div><br>
       <div class="form-inline">
-        <label class="col-sm-4">ジャンル</label>
-        <div class="col-sm-8 form-inline">
+        <label class="col-sm-5">ジャンル</label>
+        <div class="col-sm-7 form-inline">
           <%= f.collection_select(:genre_id, Genre.all, :id, :name,  {prompt: "--選択してください--"}) %>
         </div>
       </div><br>
       <div class="form-inline">
-        <label class="col-sm-4">税抜価格</label>
-        <div class="col-sm-8 form-inline">
+        <label class="col-sm-5">税抜価格</label>
+        <div class="col-sm-7 form-inline">
           <%= f.text_field :taxfree, :placeholder => "1000" %>円
         </div>
       </div><br>
       <div class="form-inline">
-        <label class="col-sm-4">販売ステータス</label>
-        <div class="col-sm-8 form-inline">
+        <label class="col-sm-5">販売ステータス</label>
+        <div class="col-sm-7 form-inline">
           <%= f.radio_button :is_valid, 'true' %>
           <%= f.label :is_valid, "販売中", {value: true, style: "display: inline-block;"} %>
           <%= f.radio_button :is_valid, 'false' %>
