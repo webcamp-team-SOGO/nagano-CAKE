@@ -25,20 +25,17 @@ class Public::CartItemsController < ApplicationController
 
   def update
     @cart_item.update(number: params[:number].to_i)
-    #flash[:success] = "#{@cart_item.item.name}の数量を変更しました"
     redirect_to cart_items_path
   end
 
   def destroy
     @cart_item.destroy
-    #flash[:danger] = "#{@cart_item.item.name}を削除しました"
     redirect_to cart_items_path
   end
 
   def destroy_all
     current_customer.cart_items.destroy_all
     redirect_to cart_items_path
-    #flash[:info] = 'カートを空にしました。'
   end
 
   private
