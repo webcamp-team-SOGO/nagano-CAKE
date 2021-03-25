@@ -1,36 +1,42 @@
 <div class='row'>
-  <div class="col-md-3">
-    <h4 class="text-right">商品詳細</h4><br>
-    <div class="text-right"><%= attachment_image_tag(@item, :image, :fill, 150, 150, format: 'jpeg', fallback: "img/no_image.jpg") %></div>
+  <div class="col-md-6">
+    <h4 class="text-center">商品詳細</h4>
   </div><br>
-  <div class="col-sm-8 offset-md-1"><br><br>
+</div>
+<div class='row'>
+  <div class="col-md-3 offset-md-1">
+    <div class="text-center">
+      <%= attachment_image_tag(@item, :image, :fill, 300, 200, format: 'jpeg', fallback: "img/no_image.jpg") %>
+    </div>
+  </div>
+  <div class="col-md-8"><br>
     <div class="form-inline">
-      <label class="col-sm-2">商品名</label>
-      <div class="col-sm-6">
+      <div class="col-sm-2">商品名</div>
+      <div class="col-sm-8">
          <%= @item.name %>
       </div>
     </div><br>
     <div class="form-inline">
-      <label class="col-sm-2">商品説明</label>
-      <div class="col-sm-6">
+      <div class="col-sm-2">商品説明</div>
+      <div class="col-sm-8">
          <%= @item.introduction %>
       </div>
     </div><br>
     <div class="form-inline">
-      <label class="col-sm-2">ジャンル</label>
-      <div class="col-sm-6">
+      <div class="col-sm-2">ジャンル</div>
+      <div class="col-sm-8">
          <%= @item.genre.name %>
       </div>
     </div><br>
     <div class="form-inline">
-      <label class="col-sm-2">税込価格<br>（税抜価格）</label>
-      <div class="col-sm-6">
+      <div class="col-sm-2">税込価格<br>（税抜価格）</div>
+      <div class="col-sm-8">
         <%= (@item.taxfree * 1.1).round.to_s(:delimited) %> (<%= @item.taxfree.to_s(:delimited) %>)円
       </div>
     </div><br>
     <div class="form-inline">
-      <label class="col-sm-2">販売ステータス</label>
-      <div class="col-sm-6">
+      <div class="col-sm-2">販売ステータス</div>
+      <div class="col-sm-8">
         <% if @item.is_valid == true %>
         <div class="text-success">販売中</div>
         <% else %>
@@ -39,7 +45,7 @@
       </div>
     </div>
 </div>
- <div class="col-11">
+ <div class="col-12">
     <div class="text-center">
       <br><%=link_to "編集する", edit_admins_item_path(@item), class: 'btn btn-success' %>
     </div>
