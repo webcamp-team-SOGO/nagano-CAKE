@@ -1,16 +1,12 @@
+<h4 class="new-title"><span class="new">ログイン</span></h4>
 <div class="container">
-  <div class="row mt-2 ml-5">
-    <div class="col-lg-4">
-      <h4 class="text-dark">ログイン</h4>
-    </div>
-  </div><br>
   <div class="col-lg-4">
     <div class="text-center">
       <h5 class="text-dark">会員の方はこちらからログイン</h5>
     </div>
   </div>
   <%= form_with model:@customer, url: customer_session_path, local: true do |f| %>
-  <div class="mt-3 ml-5 offset-2">
+  <div class="mt-3 ml-7 offset-2">
     <table class="table table-borderless">
       <thead>
         <tr>
@@ -27,7 +23,6 @@
         </tr>
       </thead>
     </table>
-    <div>
   </div>
   <% end %>
   <div>
