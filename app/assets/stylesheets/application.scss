@@ -53,3 +53,29 @@
 .footer {
   height: 80px;
 }
+
+.thanks {
+  height: 100vh
+}
+
+.thanks-message {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.mypage {
+  padding: 0 20px;
+  background-color: #eeeeee;
+}
+
+.mypage-title {
+  margin-top: 50px;
+  margin-left: 180px;
+  margin-bottom: 30px;
+}
+
+.mypage-btn {
+  font-size: 22px;
+}
