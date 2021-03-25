@@ -1,10 +1,11 @@
 
 <div class="container mb-auto">
 
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-10 mx-auto">
-    <h4 class="font-weight-bold">
-      注文情報入力
+    <h4>
+      <span class="mypage-title">注文情報入力</span>
+
     </h4>
     </div>
   </div>
@@ -15,7 +16,7 @@
 
 
   <div class="row">
-    <h5 class="font-weight-bold">支払い方法</h4>
+    <h5 class="font-weight-bold">支払い方法</h5>
   </div>
   <div class="row form-check">
     <%= f.radio_button :payment_method, "クレジットカード", checked: true %>

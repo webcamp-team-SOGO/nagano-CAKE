@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-1"></div>
-    <h3 class="mt-5">注文情報確認</h3>
+    <h3 class="mt-5"><span class="mypage-title">注文情報確認</span></h3>
   </div>
 </div>
 
@@ -11,7 +11,7 @@
     <div class="col">
       <table class="table table-bordered">
         <thead>
-          <tr>
+          <tr bgcolor="#EEEEEE">
             <th>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
@@ -37,15 +37,15 @@
             <table class="table table-bordered">
               <tbody>
                 <tr>
-                  <td>送料</td>
+                  <td bgcolor="#EEEEEE">送料</td>
                   <td><%= 800 %></td>
                 </tr>
                 <tr>
-                  <td>商品合計</td>
+                  <td bgcolor="#EEEEEE">商品合計</td>
                   <td><%= converting_to_jpy(@total_payment.to_i) %></td>
                 </tr>
                 <tr>
-                  <td>請求金額</td>
+                  <td bgcolor="#EEEEEE">請求金額</td>
                   <td><%= converting_to_jpy(@total_payment.to_i + 800) %></td>
                 </tr>
             </tbody>
@@ -94,7 +94,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-1"></div>
-      <div class="mt-5"><%= f.submit "注文を確定する" ,class: 'btn btn-sm btn-success' %></div>
+      <div class="col-md-6 offset-md-4"><%= f.submit "注文を確定する" ,class: 'btn btn-sm btn-success' %></div>
     </div>
   </div>
 <% end %>
