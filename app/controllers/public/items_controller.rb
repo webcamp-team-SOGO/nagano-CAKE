@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @kaminaris = Item.page(params[:page]).per(8)
+    @items = Item.page(params[:page]).per(8)
   end
 
   def show

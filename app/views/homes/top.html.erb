@@ -19,7 +19,7 @@
         <h1>新着商品</h1>
         <div class="row mt-5 mx-5">
             <% @items.each do |item| %>
-            <div  class="mx-auto">
+            <div class="mx-auto">
                 <div><%= attachment_image_tag(item, :image, :fill, 200, 100, format: 'jpeg', fallback: "img/no_image.jpg", class: 'maru') %></div>
                 <div><%= item.name %></div>
                 <div>¥<%= item.taxfree %></div>

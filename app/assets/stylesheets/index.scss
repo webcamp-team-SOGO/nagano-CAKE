@@ -36,3 +36,11 @@
   color         : #ff0000;     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
+
+.images{
+  display: flex;
+  flex-wrap: wrap
+}
+.article{
+  width: 25%
+}
