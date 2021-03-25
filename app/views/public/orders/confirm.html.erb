@@ -1,8 +1,5 @@
 <h3>注文情報確認</h3>
 
-
-
-
   <table class="table">
     <thead>
       <tr>
@@ -16,7 +13,6 @@
     </thead>
     <tbody>
       <% @cart_items.each do |cart_item| %>
-
       <tr>
         <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
         <td><%= cart_item.item.name %></td>
@@ -32,33 +28,24 @@
   </table>
 
 
-<%= form_with model: @order, url: orders_path, local: true do |f| %>
-
   <table class="table">
-
-
-  <table>
-
     <tbody>
       <tr>
         <td>送料</td>
-        <td><%= f.text_field :shipping, value: 800, readonly: true, class: "border border-0 border-primary" %></td>
+        <td><%= 800 %></td>
       </tr>
       <tr>
         <td>商品合計</td>
-        <td><%= f.text_field :total_payment, value: @total_payment.to_i, readonly: true, class: "border border-0 border-primary" %></td>
+        <td><%= converting_to_jpy(@total_payment.to_i) %></td>
       </tr>
       <tr>
         <td>請求金額</td>
-
         <td><%= converting_to_jpy(@total_payment.to_i + 800) %></td>
-
       </tr>
     </tbody>
   </table>
 
   <table class="table">
-
     <thead>
       <tr>
         <td>支払い方法</td>
@@ -69,9 +56,7 @@
       <tr>
         <td>お届け先</td>
         <td>
-
-          〒<%= @order.postal_code %><%= @order.address %></br>
-
+        〒<%= @order.postal_code %><%= @order.address %></br>
           <%= @order.name %>
         </td>
       </tr>
@@ -79,6 +64,9 @@
   </table>
 
 
+<%= form_with model: @order, url: orders_path, local: true do |f| %>
+  <%= f.hidden_field :shipping, value:800 %>
+  <%= f.hidden_field :total_payment, value:@total_payment.to_i %>
   <%= f.hidden_field :customer_id, value:@customer.id %>
   <%= f.hidden_field :payment_method, value:@order.payment_method %>
   <%= f.hidden_field :postal_code, value:@order.postal_code %>
