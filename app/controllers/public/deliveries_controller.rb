@@ -1,5 +1,6 @@
 class Public::DeliveriesController < ApplicationController
   before_action :set_delivery, only:[:edit, :update, :destroy]
+  before_action :authenticate_customer!
 
   def index
     @delivery = Delivery.new
@@ -12,7 +13,8 @@ class Public::DeliveriesController < ApplicationController
     if @delivery.save
       redirect_to deliveries_path
     else
-      render:index
+      @deliveries = current_customer.deliveries
+      render :index
     end
   end
 
@@ -31,7 +33,7 @@ class Public::DeliveriesController < ApplicationController
     if @delivery.update(delivery_params)
       redirect_to deliveries_path
     else
-      render :index
+      render :edit
     end
   end
 
@@ -39,9 +41,9 @@ class Public::DeliveriesController < ApplicationController
   def delivery_params
     params.require(:delivery).permit(:postal_code, :address, :name)
   end
-  
+
   def set_delivery
     @delivery = Delivery.find(params[:id])
   end
-  
+
 end
