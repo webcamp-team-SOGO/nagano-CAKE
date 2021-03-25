@@ -4,7 +4,6 @@ class Public::OrdersController < ApplicationController
   def new
     @customer = current_customer
     @order = Order.new
-    @customer = current_customer
     @deliveries = Delivery.where(customer: current_customer)
   end
 
@@ -66,7 +65,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.order(created_at: :desc).page(params[:page]).per(10)
   end
 
 
