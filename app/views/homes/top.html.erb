@@ -1,35 +1,31 @@
-<div>
+<div class="main">
      <div class="container">
         <div class="row">
-            <div  class="col-md-12 col-md-offset-8">
-                <div class="mx-auto main" style="width: 500px;">
-                    <h4 class="py-5 mx-5">
+            <div  class="col-md-12 col-md-offset-8 mx-auto mt-5 mx-5" style="width: 500px;">
+                <h4 class="">
+                    <strong>
                         ようこそ、ながのCAKEへ！</br>
                         このサイトは、ケーキ販売のECサイトになります。</br>
                         会員でない⽅も商品の閲覧はできますが、</br>
                         購⼊には会員登録が必要になります。</br>
-                    </h4>
-                </div>
+                    </strong>
+                </h4>
             </div>
         </div>
     </div>
 </div>
+<div class="back">
     <div class="container">
-        <div>
-            <div>
-                <h1>新着商品</h1>
-                <div>
-                    <div class="row">
-                        <% @items.each do |item| %>
-                        <div  class="col-3">
-                            <div><%= attachment_image_tag(item, :image, :fill, 100, 200, format: 'jpeg', fallback: "img/no_image.jpg") %></div>
-                            <div><%= item.name %></div>
-                            <div>¥<%= item.taxfree %></div>
-                        </div>
-                        <% end %>
-                    </div>
-                    <p class="text-right"><%= link_to "全ての商品を見る", items_path %></p>
-                </div>
+        <h1>新着商品</h1>
+        <div class="row mt-5 mx-5">
+            <% @items.each do |item| %>
+            <div  class="mx-auto">
+                <div><%= attachment_image_tag(item, :image, :fill, 200, 100, format: 'jpeg', fallback: "img/no_image.jpg", class: 'maru') %></div>
+                <div><%= item.name %></div>
+                <div>¥<%= item.taxfree %></div>
             </div>
+            <% end %>
         </div>
-  </div>
+        <p class="text-right"><%= link_to "全ての商品を見る", items_path %></p>
+    </div>
+</div>

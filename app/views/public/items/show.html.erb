@@ -1,19 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="mt-5 col-md-7">
-      <span class="col-md-5 offset-md-5"><%= attachment_image_tag @item, :image, format: 'jpeg', fallback: 'img/no_image.jpg', size:'300x200'%></span>
+<div class="container-fluid zei">
+  <div class="row mt-5">
+    <div class="col-2"></div>
+    <div class="mt-5 my-box col float-right">
+      <%= attachment_image_tag @item, :image, format: 'jpeg', fallback: 'img/no_image.jpg', size:'450x250'%>
     </div>
-
-    <div class="mt-5 col-md-5">
-      <p><%= @item.name %></p>
-      <p><%= @item.introduction %></p>
-      <p>¥<%= (@item.taxfree * 1.1).round.to_s(:delimited) %>（税込）</p>
-
+    <div class="mt-5 my-box col">
+      <div><h3><%= @item.name %></h3></div>
+      <div><%= @item.introduction %></div>
+      <div><h4>¥<%= (@item.taxfree * 1.1).round.to_s(:delimited) %></h4>（税込）</div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-2"></div>
+    <div class="my-box col"></div>
+    <div class="my-box col">
       <% if @item.is_valid == true && customer_signed_in? == true %>
         <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
         <%= f.select :number, options_for_select((1..100).to_a), include_blank: "個数選択" %>
         <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.submit "カートに入れる"%>
+        <%= f.submit "カートに入れる", class: "btn btn-success shadow"%>
         <% end %>
       <% elsif @item.is_valid == true && customer_signed_in? == false %>
         <div><%= "会員登録後にご購入頂けます" %></div>

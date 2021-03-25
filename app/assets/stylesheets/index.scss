@@ -18,23 +18,21 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-.main {
-     background-image: image-url('choco.jpg');
-     background-size:cover;
-     background-position: center center;
-     height:400px;
+.button {
+  display       : inline-block;
+  font-size     : 8pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 11px 15px;   /* 余白       */
+  background    : #ff0000;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 4px 4px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #ff0000;    /* 枠の指定 */
 }
-
-.back{
-      height: 100%;
-     background-color: #fffff0
-}
-
-.maru {
-    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-    width: 150px;  /* 縦横を同じ値にする */
-    height: 150px;  /* 縦横を同じ値にする */
-    border: solid 2px #fffff0;     /* 枠線指定 */
-    object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
-
+.button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #ff0000;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
 }
