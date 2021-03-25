@@ -55,8 +55,8 @@ class Public::OrdersController < ApplicationController
       number: cart_item.number
       )
     end
-     @cart_items.destroy_all
-    redirect_to order_thanks_path
+       @cart_items.destroy_all
+      redirect_to order_thanks_path
   end
 
   def thanks
