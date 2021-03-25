@@ -13,7 +13,6 @@
     </thead>
     <tbody>
       <% @cart_items.each do |cart_item| %>
-
       <tr>
         <td><%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %></td>
         <td><%= cart_item.item.name %></td>
