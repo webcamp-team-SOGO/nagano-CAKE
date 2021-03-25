@@ -3,7 +3,7 @@
   <div class="row col-10 mx-auto justify-content-between">
     <h4 class="my-3">商品一覧</h4>
     <div class="">
-    <%= link_to "", new_admins_item_path, class: 'fas fa-plus-circle fa-2x text-secondary' %>
+    <%= link_to "", new_admins_item_path, class: 'fas fa-plus-circle fa-2x mt-3 text-secondary' %>
     <%#=link_to "+", new_admins_item_path, class: 'btn btn-outline-secondary' %>
     </div>
     <table class="table table-hover table-inverse">
@@ -21,7 +21,7 @@
           <tr>
             <td><%= item.id %></td>
             <td><%= link_to admins_item_path(item.id) do %>
-                <%= item.name %>
+                <p class="text-body"><%= item.name %></p>
                 <% end %>
             </td>
             <td><%= (item.taxfree * 1.1).round.to_s(:delimited) %></td>
@@ -35,9 +35,9 @@
         <% end %>
       </tbody>
     </table>
-      <div class="row col-10 justify-content-center">
-      <%= paginate @items %>
-    </div> 
+      <div class="row col-10 pb-3 justify-content-center">
+        <%= paginate @items %>
+      </div> 
     </div> 
   </div>
 </div>

@@ -8,14 +8,14 @@
       <%= render 'layouts/errors', obj: @genre %>
       <%= form_with model: @genre, url: admins_genres_path, local: true do |f| %>
         <div class="row">
-    　     <%= f.label :"ジャンル名", class: 'mr-5' %>
+          <%= f.label :"ジャンル名", class: 'mt-2 mr-5 ' %>
           <%= f.text_field :name, placeholder: "ジャンル名", class: 'form-control col-4 mr-5' %>
           <%= f.submit "新規登録",class: 'btn btn-sm btn-success px-4' %>
         </div>
       <% end %>
     </div>
     <p id="notice"><%= notice %></p>
-    <div class="col-10">
+    <div class="col-5">
         <table class="table">
           <thead class="thead-light">
             <tr>
