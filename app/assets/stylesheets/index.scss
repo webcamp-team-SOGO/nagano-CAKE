@@ -40,6 +40,14 @@
   display: flex;
   flex-wrap: wrap
 }
+
+.image{
+  padding: 2.5% 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .article{
   width: 25%
 }
@@ -47,4 +55,8 @@
 .mypage-title {
   padding: 0 20px;
   background-color: #eeeeee;
+}
+
+.zei{
+display:flex;
 }

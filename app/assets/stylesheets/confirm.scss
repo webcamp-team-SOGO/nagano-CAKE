@@ -22,3 +22,9 @@
   padding: 0 20px;
   background-color: #eeeeee;
 }
+
+.image{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

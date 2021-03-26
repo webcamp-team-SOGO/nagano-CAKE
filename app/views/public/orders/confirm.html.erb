@@ -8,26 +8,28 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-1"></div>
-    <div class="col">
+    <div class="col-8">
       <table class="table table-bordered">
         <thead>
           <tr bgcolor="#EEEEEE">
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
+            <th class="border border-dark">商品名</th>
+            <th class="border border-dark">単価（税込）</th>
+            <th class="border border-dark">数量</th>
+            <th class="border border-dark">小計</th>
           </tr>
         </thead>
         <tbody>
           <% @cart_items.each do |cart_item| %>
           <tr>
-            <td>
-              <%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %>
-               <%= cart_item.item.name %>
-            </td>
-            <td><%= (cart_item.item.taxfree * 1.1).round.to_s(:delimited) %></td>
-            <td><%= cart_item.number %></td>
-            <td><%= (cart_item.item.taxfree * 1.1 * cart_item.number).round.to_s(:delimited) %></td>
+            <td class="border border-dark">
+              <div class="image ">
+                <%= attachment_image_tag cart_item.item, :image, fallback: "img/no-image.jpg", size: "75x50" %>
+                <%= cart_item.item.name %>
+              </div>
+            </td class="border border-dark">
+            <td class="border border-dark align-middle"><%= (cart_item.item.taxfree * 1.1).round.to_s(:delimited) %></td>
+            <td class="border border-dark align-middle"><%= cart_item.number %></td>
+            <td class="border border-dark align-middle"><%= (cart_item.item.taxfree * 1.1 * cart_item.number).round.to_s(:delimited) %></td>
           </tr>
           <% end %>
         </tbody>
@@ -37,16 +39,16 @@
             <table class="table table-bordered">
               <tbody>
                 <tr>
-                  <td bgcolor="#EEEEEE">送料</td>
-                  <td><%= 800 %></td>
+                  <td class="border border-dark" bgcolor="#EEEEEE">送料</td>
+                  <td class="border border-dark"><%= 800 %></td>
                 </tr>
                 <tr>
-                  <td bgcolor="#EEEEEE">商品合計</td>
-                  <td><%= converting_to_jpy(@total_payment.to_i) %></td>
+                  <td class="border border-dark" bgcolor="#EEEEEE">商品合計</td>
+                  <td class="border border-dark"><%= converting_to_jpy(@total_payment.to_i) %></td>
                 </tr>
                 <tr>
-                  <td bgcolor="#EEEEEE">請求金額</td>
-                  <td><%= converting_to_jpy(@total_payment.to_i + 800) %></td>
+                  <td class="border border-dark" bgcolor="#EEEEEE">請求金額</td>
+                  <td class="border border-dark"><%= converting_to_jpy(@total_payment.to_i + 800) %></td>
                 </tr>
             </tbody>
           </table>
@@ -60,14 +62,14 @@
     <div class="col-1"></div>
     <table>
       <thead>
-        <tr>
-          <td><strong>支払い方法</strong></td>
-          <td></td>
+        <tr width="80" height="50">
+          <td><strong>支払方法</strong></td>
+          <td width="20"></td>
           <td><%= @order.payment_method %></td>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr width="80" height="50">
           <td><strong>お届け先</strong></td>
           <td></td>
           <td>〒<%= @order.postal_code %><%= @order.address %></td>
