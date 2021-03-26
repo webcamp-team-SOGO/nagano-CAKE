@@ -3,12 +3,16 @@
     <div class="container mt-3">
       <!--<a class="logo" href="/"><span>naganoCAKE</span></a>-->
       <%= link_to root_path do %>
-      <%= image_tag 'img/logo1.png', size:'150x80' %>
+      <%= image_tag 'img/logo3.png', size:'150x80' %>
       <% end %>
       <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
       <!--  <span class="navbar-toggler-icon"></span>-->
       <!--</button>-->
       <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li class="center_line">ようこそ、<%= current_customer.last_name %>さん！</li>
@@ -29,6 +33,7 @@
           <li><%= link_to "ログイン", new_customer_session_path, class: 'border rounded nav-link text-body' %></li>
         <% end %>
         </ul>
+      </div>
       <!--</div>-->
     </div>
   </nav>
