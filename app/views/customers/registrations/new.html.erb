@@ -1,61 +1,63 @@
 <h4 class="new-title"><span class="new">新規会員登録</span></h4>
 <div class="container">
-  <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
-  <div class="mt-3 ml-5 offset-2">
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <th>名前<label class="text-right">（姓）</label></th>
-          <th>
-            <%= f.text_field :last_name, placeholder: "令和", autofocus: true, autocomplete: "last_name" %>
-            （名）<%= f.text_field :first_name, placeholder: "道⼦", autofocus: true, autocomplete: "first_name" %>
-          </th>
-        </tr>
-        <tr>
-          <th>フリガナ</th>
-          <th>
-            （セイ）<%= f.text_field :k_last_name, placeholder: "レイワ", autofocus: true, autocomplete: "k_last_name" %>
-            （メイ）<%= f.text_field :k_first_name, placeholder: "ミチコ", autofocus: true, autocomplete: "k_first_name" %>
-          </th>
-        </tr>
+  <div class="row">
+    <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+    <%= render "customers/shared/error_messages", resource: resource %>
+    <div class="mt-3 ml-5 offset-3">
+      <table class="table table-borderless">
+        <thead>
           <tr>
-            <th>メールアドレス</th>
+            <th>名前</th>
             <th>
-              <%= f.email_field :email,placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %>
+              （姓）<%= f.text_field :last_name, placeholder: "令和", autofocus: true, autocomplete: "last_name" %>
+              （名）<%= f.text_field :first_name, placeholder: "道⼦", autofocus: true, autocomplete: "first_name" %>
+            </th>
+          </tr>
+          <tr>
+            <th>フリガナ</th>
+            <th>
+              （セイ）<%= f.text_field :k_last_name, placeholder: "レイワ", autofocus: true, autocomplete: "k_last_name" %>
+              （メイ）<%= f.text_field :k_first_name, placeholder: "ミチコ", autofocus: true, autocomplete: "k_first_name" %>
             </th>
           </tr>
             <tr>
-              <th>郵便番号（ハイフンなし）</th>
+              <th>メールアドレス</th>
               <th>
-                <%= f.text_field :postal_code, placeholder: "0000000", autofocus: true, autocomplete: "postal_code" %>
+                <%= f.email_field :email,placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %>
               </th>
             </tr>
-            <tr>
-              <th>住所</th>
-              <th><%= f.text_field :address, placeholder: "東京都渋⾕区代々⽊神園町0-0", autofocus: true, autocomplete: "address", class: "hoge", size: 40 %></th>
-            </tr>
-            <tr>
-              <th>電話番号</th>
-              <th><%= f.text_field :telephone_number, placeholder: "0000000000", autofocus: true, autocomplete: "telephone_number" %></th>
-            </tr>
-            <tr>
-              <th>パスワード（6文字以上）</th>
-              <th><%= f.password_field :password, autocomplete: "new-password" %></th>
-            </tr>
-            <tr>
-              <th>パスワード（確認用）</th>
-              <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
-            </tr>
-      </thead>
-    </table>
-  </div>
-  <div class="text-center">
-    <%= f.submit "新規登録", class: 'btn btn-success' %>
-  </div>
-  <% end %>
-  <div class="col-lg-4">
-    <h4 class="text-dark">すでに既に登録済の方は</h4>
-    <h7><%= link_to "こちら", new_customer_session_path %>からログインしてください</h7>
+              <tr>
+                <th>郵便番号（ハイフンなし）</th>
+                <th>
+                  <%= f.text_field :postal_code, placeholder: "0000000", autofocus: true, autocomplete: "postal_code" %>
+                </th>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <th><%= f.text_field :address, placeholder: "東京都渋⾕区代々⽊神園町0-0", autofocus: true, autocomplete: "address", class: "hoge", size: 40 %></th>
+              </tr>
+              <tr>
+                <th>電話番号</th>
+                <th><%= f.text_field :telephone_number, placeholder: "0000000000", autofocus: true, autocomplete: "telephone_number" %></th>
+              </tr>
+              <tr>
+                <th>パスワード（6文字以上）</th>
+                <th><%= f.password_field :password, autocomplete: "new-password" %></th>
+              </tr>
+              <tr>
+                <th>パスワード（確認用）</th>
+                <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
+              </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="text-center">
+      <%= f.submit "新規登録", class: 'btn btn-success px-4' %>
+    </div>
+    <% end %>
+    <div class="col-lg-4">
+      <h4 class="text-dark">すでに既に登録済の方は</h4>
+      <h7><%= link_to "こちら", new_customer_session_path %>からログインしてください</h7>
+　  </div>
 　</div>
 </div>
