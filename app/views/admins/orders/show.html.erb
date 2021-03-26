@@ -1,41 +1,45 @@
-<h4>注文履歴詳細</h4>
+<h4 class="new-title"><span class="new">注文履歴詳細</span></h4>
 
 <div>
   <p id="notice"><%= notice %></p>
 </div>
 <div class='row'>
-  <div class="col-sm-3">
-    <div class="form-inline">
-      <label class>購入者</label>
-      <div><%= link_to  admins_customer_path(@order.customer) do %>
-      <%= @order.customer.last_name %><%= @order.customer.first_name %>
-      <% end %>
-      </div>
-    </div>
-    <div class="form-inline">
-      <label class>注文日</label>
-      <div><%= @order.created_at.strftime('%Y/%m/%d') %></div>
-    </div>
-    <div class="form-inline">
-      <label class>配送先</label>
-      <div>〒<%=@order.postal_code %> <%= @order.address %><%= @order.name %></div>
-    </div>
-    <div class="form-inline">
-      <label class>支払い方法</label>
-      <div><%= @order.payment_method %></div>
-    </div>
-     <div class="form-inline">
-      <label class>注文ステータス</label>
-      <%= form_with model: @order, url: admins_order_path(@order), local: true do |f| %>
-      <div><%= f.select :status, Order.statuses.keys.to_a, {}%>
-           <%= f.submit "更新", class: 'btn btn-success' %>
-      </div>
-      <% end %>
-    </div>
+  <div class="col-lg-10 offset-1">
+    <table class="table table-borderless">
+        <thead>
+          <tr>
+            <td><strong>購入者</strong></td>
+            <td>
+              <%= link_to  admins_customer_path(@order.customer) do %>
+              <span class="text-body"><%= @order.customer.last_name %><%= @order.customer.first_name %></span>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>注文日</strong></td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td><strong>配送先</strong></td>
+            <td>〒<%=@order.postal_code %> <%= @order.address %><br><%= @order.name %></td>
+          </tr>
+          <tr>
+            <td><strong>支払い方法</strong></td>
+            <td><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <td><strong>注文ステータス</strong></td>
+            <td>
+              <%= form_with model: @order, url: admins_order_path(@order), local: true do |f| %>
+              <%= f.select :status, Order.statuses.keys.to_a, {}, class: "mr-3"%>
+              <%= f.submit "更新", class: 'btn btn-success' %>
+            </td>
+            <% end %>
+          </tr>
+        </thead>
+    </table>
   </div>
-</div><br>
-<div class='row'>
-  <div class="col-sm-9">
+  <div class="col-lg-7 offset-1">
     <table class="table">
       <thead class="thead-light">
         <tr>
@@ -45,7 +49,6 @@
           <th>小計</th>
           <th>製作ステータス</th>
           <th></th>
-
         </tr>
       </thead>
       <tbody>
@@ -64,26 +67,22 @@
       </tbody>
     </table>
   </div>
-    <div class="col-sm-3">
-      <div class="align-bottom">
-        <div class="group">
-        <div class="form-inline">
-          <label class>商品合計</label>
-          <div><%= converting_to_jpy(@order.total_payment.to_i) %>円</div>
-        </div>
-      </div><br>
-      <div class="group">
-        <div class="form-inline">
-          <label class>送料</label>
-          <div><%= converting_to_jpy(@order.shipping) %>円</div>
-        </div>
-      </div><br>
-      <div class="group">
-        <div class="form-inline">
-          <label class>請求金額合計</label>
-          <div><%= converting_to_jpy(@order.total_payment + @order.shipping) %>円</div>
-        </div>
-      </div><br>
-      </div></div>
+  <div class="col-2 ml-3">
+    <div class="absolute" style="position: absolute; bottom: 0;">
+      <table class="table table-borderless table-bottom">
+        <tr>
+          <th>商品合計</th>
+          <td><%= converting_to_jpy(@order.total_payment.to_i) %>円</td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= converting_to_jpy(@order.total_payment.to_i) %>円</td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <td><%= converting_to_jpy(@order.total_payment + @order.shipping) %>円</td>
+        </tr>
+      </table>
     </div>
+  </div>
 </div>
