@@ -1,10 +1,8 @@
 <h4 class="new-title"><span class="new">注文履歴詳細</span></h4>
 
-<div>
-  <p id="notice"><%= notice %></p>
-</div>
 <div class='row'>
   <div class="col-lg-10 offset-1">
+    <p id="notice"><%= notice %></p>
     <table class="table table-borderless">
         <thead>
           <tr>
@@ -24,7 +22,7 @@
             <td>〒<%=@order.postal_code %> <%= @order.address %><br><%= @order.name %></td>
           </tr>
           <tr>
-            <td><strong>支払い方法</strong></td>
+            <td><strong>支払方法</strong></td>
             <td><%= @order.payment_method %></td>
           </tr>
           <tr>
@@ -40,7 +38,7 @@
     </table>
   </div>
   <div class="col-lg-7 offset-1">
-    <table class="table">
+    <table class="table table-borderless border-top border-bottom">
       <thead class="thead-light">
         <tr>
           <th>商品名</th>
@@ -67,7 +65,7 @@
       </tbody>
     </table>
   </div>
-  <div class="col-2 ml-3">
+  <div class="col-4">
     <div class="absolute" style="position: absolute; bottom: 0;">
       <table class="table table-borderless table-bottom">
         <tr>
@@ -76,7 +74,7 @@
         </tr>
         <tr>
           <th>送料</th>
-          <td><%= converting_to_jpy(@order.total_payment.to_i) %>円</td>
+          <td class="text-right"><%= converting_to_jpy(@order.shipping) %>円</td>
         </tr>
         <tr>
           <th>請求金額合計</th>
