@@ -10,23 +10,23 @@
     <table class="table table-borderless">
       <thead>
         <tr>
-          <th><%= f.label "メールアドレス" %></th>
-          <th><%= f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email", class: "hoge", size: 40 %></th><br>
+          <td><%= f.label "メールアドレス" %></td>
+          <td><%= f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email", class: "hoge", size: 40 %></td><br>
         </tr>
         <tr>
-          <th><%= f.label "パスワード" %></th>
-          <th><%= f.password_field :password, autocomplete: "current-password", class: "hoge", size: 40 %></th><br>
+          <td><%= f.label "パスワード" %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password", class: "hoge", size: 40 %></td><br>
         </tr>
         <tr>
-          <th></th>
-          <th><%= f.submit "ログイン", class: 'btn btn-primary px-4' %></th>
+          <td></td>
+          <td><%= f.submit "ログイン", class: 'btn btn-primary px-4' %></td>
         </tr>
       </thead>
     </table>
   </div>
   <% end %>
   <div>
-    <h5 class="text-dark">会員登録がお済みでない方</h5>
+    <h5><span class="new">会員登録がお済みでない方</span></h5>
     <%= link_to "こちら", new_customer_registration_path %>　から会員登録を行ってください。
   </div>
 </div>

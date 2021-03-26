@@ -7,46 +7,52 @@
       <table class="table table-borderless">
         <thead>
           <tr>
-            <th>名前</th>
-            <th>
-              （姓）<%= f.text_field :last_name, placeholder: "令和", autofocus: true, autocomplete: "last_name" %>
-              （名）<%= f.text_field :first_name, placeholder: "道⼦", autofocus: true, autocomplete: "first_name" %>
-            </th>
+            <td>名前</td>
+            <td>（姓）</td>
+            <td><%= f.text_field :last_name, placeholder: "令和", autofocus: true, autocomplete: "last_name" %></td>
+            <td>（名）</td>
+            <td><%= f.text_field :first_name, placeholder: "道⼦", autofocus: true, autocomplete: "first_name" %></td>
           </tr>
           <tr>
-            <th>フリガナ</th>
-            <th>
-              （セイ）<%= f.text_field :k_last_name, placeholder: "レイワ", autofocus: true, autocomplete: "k_last_name" %>
-              （メイ）<%= f.text_field :k_first_name, placeholder: "ミチコ", autofocus: true, autocomplete: "k_first_name" %>
-            </th>
+            <td>フリガナ</td>
+            <td>（セイ）</td>
+            <td><%= f.text_field :k_last_name, placeholder: "レイワ", autofocus: true, autocomplete: "k_last_name" %></td>
+            <td>（メイ）</td>
+            <td><%= f.text_field :k_first_name, placeholder: "ミチコ", autofocus: true, autocomplete: "k_first_name" %></td>
           </tr>
             <tr>
-              <th>メールアドレス</th>
-              <th>
+              <td>メールアドレス</td>
+              <td></td>
+              <td>
                 <%= f.email_field :email,placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %>
-              </th>
+              </td>
             </tr>
               <tr>
-                <th>郵便番号（ハイフンなし）</th>
-                <th>
+                <td>郵便番号（ハイフンなし）</td>
+                <td></td>
+                <td>
                   <%= f.text_field :postal_code, placeholder: "0000000", autofocus: true, autocomplete: "postal_code" %>
-                </th>
+                </td>
               </tr>
               <tr>
-                <th>住所</th>
-                <th><%= f.text_field :address, placeholder: "東京都渋⾕区代々⽊神園町0-0", autofocus: true, autocomplete: "address", class: "hoge", size: 40 %></th>
+                <td>住所</td>
+                <td></td>
+                <td colspan="3"><%= f.text_field :address, placeholder: "東京都渋⾕区代々⽊神園町0-0", autofocus: true, autocomplete: "address", class: "hoge", size: 60 %></td>
               </tr>
               <tr>
-                <th>電話番号</th>
-                <th><%= f.text_field :telephone_number, placeholder: "0000000000", autofocus: true, autocomplete: "telephone_number" %></th>
+                <td>電話番号</td>
+                <td></td>
+                <td><%= f.text_field :telephone_number, placeholder: "0000000000", autofocus: true, autocomplete: "telephone_number" %></td>
               </tr>
               <tr>
-                <th>パスワード（6文字以上）</th>
-                <th><%= f.password_field :password, autocomplete: "new-password" %></th>
+                <td>パスワード（6文字以上）</td>
+                <td></td>
+                <td><%= f.password_field :password, autocomplete: "new-password" %></td>
               </tr>
               <tr>
-                <th>パスワード（確認用）</th>
-                <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
+                <td>パスワード（確認用）</td>
+                <td></td>
+                <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
               </tr>
         </thead>
       </table>
@@ -56,7 +62,7 @@
     </div>
     <% end %>
     <div class="col-lg-4">
-      <h4 class="text-dark">すでに既に登録済の方は</h4>
+      <h4><span class="new">すでに既に登録済の方は</span></h4>
       <h7><%= link_to "こちら", new_customer_session_path %>からログインしてください</h7>
 　  </div>
 　</div>
