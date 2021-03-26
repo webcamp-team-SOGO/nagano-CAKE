@@ -1,7 +1,7 @@
 <h4 class="mypage-title"><span class="mypage">注文履歴一覧</span></h4>
 
-<div class="container orders-index">
-  <div class="row">
+<div class="container orders-index body">
+  <div class="row wrapper">
     <table class="table table-bordered">
       <thead class="thead-light">
         <tr>
@@ -38,4 +38,4 @@
 </div>
 
 
-<%= paginate @orders %>
+<div class="pagination"><%= paginate @orders %></div>

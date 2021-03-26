@@ -1,11 +1,11 @@
 
 <h4 class="mypage-title"><span class="mypage">配送先登録/一覧</span></h4>
 
-<div class="container delivery-index">
+<div class="container delivery-index body">
 
 <%= render 'layouts/errors', obj: @delivery %>
 
-<div class="row">
+<div class="row wrapper">
   <div class="col-md-9" >
     <%= form_with model:@delivery, local: true do |f| %>
       <table class='table table-borderless table-sm'>
@@ -34,8 +34,8 @@
 </div>
 <br>
 
-<div class="row">
-  <div class="col-md-8">
+<div class="row mt-5">
+  <div class="col-md-9">
      <table bgcolor="#FFF" class="table table-bordered">
         <thead class="thead-light">
         <tr>
