@@ -6,11 +6,11 @@
     <table class="table table-borderless">
       <thead>
         <tr>
-          <th><%= f.label "メールアドレス", class:"" %></th>
+          <td><%= f.label "メールアドレス", class:"" %></td>
           <th><%= f.email_field :email, size: 50, placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></th>
         </tr>
         <tr>
-          <th><%= f.label "パスワード" %></th>
+          <td><%= f.label "パスワード" %></td>
           <th><%= f.password_field :password, size: 50, autocomplete: "current-password" %></th>
         </tr>
         <tr>
