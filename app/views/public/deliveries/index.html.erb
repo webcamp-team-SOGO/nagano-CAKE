@@ -1,12 +1,12 @@
-<div class="row">
-  <h4 class="col-md-10 mx-auto font-weight-bold">配送先登録/一覧</h4>
-</div>
-<br>
+
+<h4 class="mypage-title"><span class="mypage">配送先登録/一覧</span></h4>
+
+<div class="container">
 
 <%= render 'layouts/errors', obj: @delivery %>
 
 <div class="row">
-  <div class="col-md-10" >
+  <div class="col-md-9" >
     <%= form_with model:@delivery, local: true do |f| %>
       <table class='table table-borderless table-sm'>
         <tr>
@@ -35,9 +35,9 @@
 <br>
 
 <div class="row">
-  <div class="col-md-10">
-     <table bgcolor="#FFF" class="table table-bordered shadow">
-        <thead class="bg-secondary text-light">
+  <div class="col-md-8">
+     <table bgcolor="#FFF" class="table table-bordered">
+        <thead class="thead-light">
         <tr>
           <th>郵便番号</th>
           <th>住所</th>
@@ -60,4 +60,6 @@
       </tbody>
     </table>
   </div>
+</div>
+
 </div>
