@@ -1,21 +1,32 @@
-<h1>配送先編集</h1>
-<%= render 'layouts/errors', obj: @delivery %>
-<%= form_with model: @delivery, url: delivery_path, local:true do |f| %>
-<table>
-  <tbody>
-    <tr>
-      <td>郵便番号（ハイフンなし）</td>
-      <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td><%= f.text_field :address, autocomplete: "address" %></td>
-    </tr>
-    <tr>
-      <td>宛名</td>
-      <td><%= f.text_field :name, autocomplete: "name" %></td>
-    </tr>
-  </tbody>
-</table>
-<div><%= f.submit '変更内容を保存' %></div>
-<% end %>
+<h4 class="mypage-title"><span class="mypage">配送先編集</span></h4>
+
+<div class="container delivery-edit">
+  <div class="row">
+
+    <%= render 'layouts/errors', obj: @delivery %>
+
+    <%= form_with model: @delivery, url: delivery_path, local:true do |f| %>
+
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>郵便番号（ハイフンなし）</td>
+            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address, autocomplete: "address", size: "60" %></td>
+          </tr>
+          <tr>
+            <td>宛名</td>
+            <td><%= f.text_field :name, autocomplete: "name" %></td>
+            <td><%= f.submit '変更内容を保存', class:"btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+
+  </div>
+</div>
+
+
