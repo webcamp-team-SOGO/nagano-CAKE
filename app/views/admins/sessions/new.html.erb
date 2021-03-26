@@ -1,34 +1,29 @@
+<h4 class="title"><span class="mypage">管理者ログイン</span></h4>
 
-<div class="conrainer">
-
-<h4>管理者ログイン</h4>
-
-<%= form_with model:@admin, url: admin_session_path, local: true do |f| %>
-
-<div class="row col-lg-6 mx-auto">
-
-  <table>
-    <thead>
-      <tr>
-        <th><%= f.label "メールアドレス" %></th>
-        <th><%= f.email_field :email, size: 50, placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></th>
-      </tr>
-      <tr>
-        <th><%= f.label "パスワード" %></th>
-        <th><%= f.password_field :password, size: 50, autocomplete: "current-password" %></th>
-      </tr>
-      <tr>
-        <th></th>
-        <th>
-          <div class="actions">
-          <%= f.submit "ログイン", class:"btn btn-primary" %>
-          </div>
-        </th>
-      </tr>
-    </thead>
-  </table>
-
-<% end %>
-
+<div class="container">
+  <div class="row mx-auto justify-content-center">
+    <%= form_with model:@admin, url: admin_session_path, local: true do |f| %>
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <td><%= f.label "メールアドレス", class:"" %></td>
+          <th><%= f.email_field :email, size: 50, placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></th>
+        </tr>
+        <tr>
+          <td><%= f.label "パスワード" %></td>
+          <th><%= f.password_field :password, size: 50, autocomplete: "current-password" %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>
+            <div class="actions">
+            <%= f.submit "ログイン", class:"btn btn-primary" %>
+            </div>
+          </th>
+        </tr>
+      </thead>
+    </table>
+  <% end %>
+  </div>
 </div>
-</div>
+

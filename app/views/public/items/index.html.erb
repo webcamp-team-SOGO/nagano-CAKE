@@ -1,36 +1,35 @@
-<div>
-  <table>
-    <thead>
-      <tr>
-        <td><h1>商品一覧</h1></td>
-        <td><h3>(全<%= @items.count%>件)</h3></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <% @items.each do |item| %>
-        <td>
-          <div>
-            <%= link_to item_path(item.id) do %>
-            <%= attachment_image_tag(item, :image, :fill, 100, 100, format: 'jpeg', fallback: "img/no_image.jpg") %>
-            <% end %>
-          </div>
-          <div>
-            <%= link_to item_path(item.id) do %>
-            <%= item.name %>
-            <% end %>
-          </div>
-          <div>
-            ¥<%= item.taxfree %>
-          </div>
-          <% if item.is_valid == false %>
-          <div><%= "Sold Out" %></div>
-          <% else %>
-          <div></div>
-          <% end %>
-        </td>
-         <% end %>
-      </tr>
-    </table>
-  <%= paginate(@kaminari) %>
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-1"></div>
+    <div class="col-4 zei"><h1>商品一覧</h1>
+    <div class="d-flex align-items-end"><p>(全<%= @items.count%>件)</p></div>
+    </div>
+  </div>
+  <div class="col-2"></div>
+  <div class="images text-center mt-5 mx-5">
+    <% @items.each do |item| %>
+    <div class="article">
+      <div>
+      <%= link_to item_path(item.id) do %>
+      <%= attachment_image_tag(item, :image, :fill, 200, 100, format: 'jpeg', fallback: "img/no_image.jpg") %>
+      <% end %>
+      </div>
+      <div>
+      <%= link_to item_path(item.id) do %>
+      <%= item.name %>
+      <% end %>
+      </div>
+      <div>
+        ¥<%= item.taxfree %>
+      </div>
+      <% if item.is_valid == false %>
+      <div><%= "Sold Out" %></div>
+      <% else %>
+      <div></div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
 </div>
+<div class="mt-5 mx-5"><%= paginate @items %></div>
+
