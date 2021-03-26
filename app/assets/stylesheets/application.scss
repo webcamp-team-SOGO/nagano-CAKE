@@ -50,6 +50,7 @@
   height: 120px;
 }
 
+
 .new {
   padding: 0 20px;
   background-color: #EEEEEE;
@@ -75,6 +76,76 @@
   margin-bottom: 30px;
 }
 
+.thanks {
+  height: 100vh;
+}
+
+.withdraw-confirm {
+  height: 100vh;
+}
+
+.main-edit {
+  height: 100vh;
+}
+
+.delivery-index {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.delivery-edit {
+  height: 100vh;
+}
+
+.orders-index {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.thanks-message {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.withdraw-confirm-message {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.confirm-message{
+  font-size: 20px;
+}
+
+.mypage {
+  padding: 0 20px;
+  background-color: #eeeeee;
+}
+
+.mypage-title {
+  margin-top: 50px;
+  margin-left: 180px;
+  margin-bottom: 30px;
+}
+
+.c-edit {
+  margin-top: 50px;
+  margin-left: 180px;
+  margin-bottom: 30px;
+}
+
+.my-edit {
+  padding: 0 20px;
+  background-color: #eeeeee;
+}
+
+.mypage-btn {
+  font-size: 22px;
+}
+
 .item-top{
   margin-top: 50px;
   margin-left: 180px;
@@ -94,4 +165,16 @@
 
 .customer-edit {
   height: 100vh;
+.body {
+  height: 100%;
+  margin-bottom: 50px;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+.pagination {
+  justify-content: center;
 }
