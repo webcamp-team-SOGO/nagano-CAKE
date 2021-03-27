@@ -26,7 +26,7 @@
             <p>宛名</p>
           </th>
           <td><%= f.text_field :name, autofocus: true, placeholder:"令和道⼦" %></td>
-          <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
+          <td><%= f.submit "新規登録", class: "btn btn-success px-4" %></td>
         </tr>
       </table>
     <% end %>
@@ -51,8 +51,8 @@
           <td class="border border-dark"><%= delivery.postal_code %></td>
           <td class="border border-dark"><%= delivery.address %></td>
           <td class="border border-dark"><%= delivery.name %></td>
-          <td class="border border-dark">
-            <%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success form" %>
+          <td class="border border-dark mr-3">
+            <%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success form mr-3" %>
             <%= link_to "削除する", delivery_path(delivery.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に消しますか？" %>
           </td>
         </tr>
