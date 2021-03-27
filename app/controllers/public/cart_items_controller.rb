@@ -8,12 +8,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-      @cart_item = current_customer.cart_items.build(item_id: params[:item_id], number: params[:number].to_i)
-
       if @cart_item.number == 0
         redirect_to request.referer
       else
-
         @cart_items = current_customer.cart_items.all
         @cart_items.each do |cart_item|
           if cart_item.item_id == @cart_item.item_id
@@ -24,12 +21,8 @@ class Public::CartItemsController < ApplicationController
         end
         @cart_item.save
         redirect_to cart_items_path
-
       end
-
   end
-
-
 
   def update
     @cart_item.update(number: params[:number].to_i)
