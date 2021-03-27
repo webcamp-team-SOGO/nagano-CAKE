@@ -50,18 +50,6 @@
   height: 120px;
 }
 
-
-
-.new {
-  padding: 0 20px;
-  background-color: #EEEEEE;
-}
-.new-title {
-  margin-top: 50px;
-  margin-left: 180px;
-  margin-bottom: 30px;
-}
-
 .new {
   padding: 0 20px;
   background-color: #EEEEEE;
@@ -79,6 +67,12 @@
 .mypage {
   padding: 0 20px;
   background-color: #EEEEEE;
+}
+
+.title {
+  margin-top: 50px;
+  margin-left: 180px;
+  margin-bottom: 30px;
 }
 
 .thanks {
@@ -154,6 +148,22 @@
 .item-top{
   margin-top: 50px;
   margin-left: 180px;
+}
+
+.genre-edit {
+  height: 100vh;
+}
+
+.sessions-new {
+  height: 100vh;
+}
+
+.customer-show {
+  height: 100vh;
+}
+
+.customer-edit {
+  height: 100vh;
 }
 
 .body {
