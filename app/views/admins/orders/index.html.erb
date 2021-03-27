@@ -1,8 +1,8 @@
 
 <h4 class="title"><span class="mypage">注文履歴一覧</span></h4>
 <div class="container thanks">
-  <p id="notice"><%= notice %></p>
   <div class="row col-10 mx-auto">
+    <p id="notice"><%= notice %></p>
     <table class="table table-hover table-inverse">
       <thead class="thead-light">
         <tr>
@@ -12,7 +12,7 @@
           <th>注文ステータス</th>
         </tr>
       </thead>
-      
+
       <tbody>
         <% @orders.each do |order| %>
         <tr>
@@ -30,6 +30,6 @@
     </table>
     <div class="row col-10 pb-3 justify-content-center">
       <%= paginate @orders %>
-    </div> 
+    </div>
   </div>
 </div>

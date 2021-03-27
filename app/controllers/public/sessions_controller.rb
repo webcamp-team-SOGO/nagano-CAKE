@@ -12,11 +12,12 @@ class Public::SessionsController < Devise::SessionsController
   def create
       @customer = Customer.find_by(email: params[:customer][:email])
       if @customer && @customer.is_valid == false
-        redirect_to root_path
+        redirect_to request.referer, notice: "退会済みのアカウントです"
       else
         super
       end
   end
+
 
   # DELETE /resource/sign_out
   # def destroy
