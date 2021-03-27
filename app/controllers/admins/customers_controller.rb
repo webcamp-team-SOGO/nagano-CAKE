@@ -1,6 +1,15 @@
 class Admins::CustomersController < ApplicationController
 before_action :authenticate_admin!
 
+
+  def search
+    if params[:last_name].present?
+      @customers = Customer.where('last_name LIKE ?', "%#{params[:last_name]}%")
+    else
+      @customers = Customer.none
+    end
+  end
+
   def index
      @customers = Customer.page(params[:page]).per(10)
   end
@@ -21,6 +30,7 @@ before_action :authenticate_admin!
       render "edit"
     end
   end
+
 
   private
   def customer_params

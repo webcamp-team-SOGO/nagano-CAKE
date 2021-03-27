@@ -16,4 +16,8 @@ class Customer < ApplicationRecord
          has_many :deliveries, dependent: :destroy
          has_many :orders, dependent: :destroy
 
+  def self.search(search)
+    return Customer.all unless search
+    Customer.where(['content LIKE ?', "%#{search}%"])
+  end
 end
