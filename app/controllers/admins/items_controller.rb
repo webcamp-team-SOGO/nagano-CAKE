@@ -7,6 +7,10 @@ before_action :authenticate_admin!
 
   def index
     @items = Item.page(params[:page]).per(10)
+    @genre = Genre.all
+    if params[:name].present?
+    @genre = @genre.get_by_name params[:name]
+    end
   end
 
   def show
@@ -34,6 +38,8 @@ before_action :authenticate_admin!
       render "edit"
     end
   end
+  
+  
 
   private
   def item_params
