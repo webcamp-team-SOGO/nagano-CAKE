@@ -31,7 +31,9 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_option] == "2"
       @order = Order.new(order_params)
       if @order.postal_code.blank? || @order.address.blank? || @order.name.blank?
-        redirect_to new_order_path
+        @customer = current_customer
+        @deliveries = Delivery.where(customer: current_customer)
+        render action: :new
       else
         @order = Order.new(order_params)
       end
