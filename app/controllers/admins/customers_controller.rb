@@ -1,6 +1,21 @@
 class Admins::CustomersController < ApplicationController
 before_action :authenticate_admin!
 
+
+  def search
+    redirect_to root_path if params[:word] == "" # キーワードが入力されていないとトップページに飛ぶ
+    @range = params[:range]
+		@search = params[:search]
+		@word = params[:word]
+		if @range == '1'
+			@customers = Customer.search(@search,@word)
+		elsif @range == '2'
+			@items = Item.search(@search,@word)
+	  elsif @range == '3'
+		  @genres = Genre.search(@search,@word)
+		end
+  end
+
   def index
      @customers = Customer.page(params[:page]).per(10)
   end
@@ -21,6 +36,7 @@ before_action :authenticate_admin!
       render "edit"
     end
   end
+
 
   private
   def customer_params

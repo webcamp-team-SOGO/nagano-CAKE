@@ -9,4 +9,8 @@ class Item < ApplicationRecord
   validates :taxfree, presence: true
   validates :is_valid, inclusion: { in: [true, false] }
 
+  def self.search(search, word)
+      @items = Item.where("name LIKE?","%#{word}%")
+  end
+
 end

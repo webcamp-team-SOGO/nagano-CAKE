@@ -16,4 +16,7 @@ class Customer < ApplicationRecord
          has_many :deliveries, dependent: :destroy
          has_many :orders, dependent: :destroy
 
+  def self.search(search, word)
+    @customers = Customer.where("last_name LIKE? OR first_name LIKE?","%#{word}%","%#{word}%")
+  end
 end
