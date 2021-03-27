@@ -1,9 +1,9 @@
 <header class=" header border-bottom border-dark">
   <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container mt-3">
+    <div class="container mt-2">
       <!--<a class="logo" href="/"><span>naganoCAKE</span></a>-->
       <%= link_to root_path do %>
-      <%= image_tag 'img/logo3.png', size:'150x80' %>
+      <%= image_tag 'img/logo.png', size:'95x95' %> 
       <% end %>
       <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
       <!--  <span class="navbar-toggler-icon"></span>-->
@@ -16,7 +16,7 @@
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li class="center_line">ようこそ、<%= current_customer.last_name %>さん！</li>
-          <li><%= link_to "マイページ", customer_path(current_customer.id), class: 'border rounded nav-link text-body mr-4 ' %></li>
+          <li><%= link_to "マイページ", customer_path(current_customer.id), class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "商品一覧", items_path, class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "カート", cart_items_path, class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'border rounded nav-link text-body' %></li>
