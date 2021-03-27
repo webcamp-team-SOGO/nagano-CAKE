@@ -22,9 +22,14 @@
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td class="border border-dark">
-            <div class="image">
-              <%= attachment_image_tag(cart_item.item, :image, fallback: "img/no_image.jpg", size: "70x50") %><p class="align-left"><%= cart_item.item.name %></p>
+            <div>
+              <div class="itembox mr-5">
+                <%= attachment_image_tag(cart_item.item, :image, fallback: "img/no_image.jpg", size: "70x50") %>
+              </div>
+              <div class="p-2"><%= cart_item.item.name %></div>
             </div>
+            
+            
           </td>
           <td class="border border-dark align-middle"><%= (cart_item.item.taxfree * 1.1).round.to_s(:delimited) %></td>
           <td class="border border-dark align-middle">
