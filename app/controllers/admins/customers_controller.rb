@@ -3,11 +3,17 @@ before_action :authenticate_admin!
 
 
   def search
-    if params[:last_name].present?
-      @customers = Customer.where('last_name LIKE ?', "%#{params[:last_name]}%")
-    else
-      @customers = Customer.none
-    end
+    redirect_to root_path if params[:word] == "" # キーワードが入力されていないとトップページに飛ぶ
+    @range = params[:range]
+		@search = params[:search]
+		@word = params[:word]
+		if @range == '1'
+			@customers = Customer.search(@search,@word)
+		elsif @range == '2'
+			@items = Item.search(@search,@word)
+	  elsif @range == '3'
+		  @genres = Genre.search(@search,@word)
+		end
   end
 
   def index

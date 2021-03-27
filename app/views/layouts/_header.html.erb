@@ -21,7 +21,6 @@
           <li><%= link_to "カート", cart_items_path, class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'border rounded nav-link text-body' %></li>
         <% elsif admin_signed_in? %>
-          <%= render 'layouts/search' %>
           <li><%= link_to "商品一覧", admins_items_path, class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "会員一覧", admins_customers_path, class: 'border rounded nav-link text-body mr-4' %></li>
           <li><%= link_to "注文商品一覧", admins_orders_path(order_sort: 0), class: 'border rounded nav-link text-body mr-4' %></li>
@@ -37,5 +36,9 @@
       </div>
       <!--</div>-->
     </div>
+       <% if admin_signed_in? %>
+      <%= render 'layouts/search' %>
+      <% end %>
   </nav>
+
 </header>
