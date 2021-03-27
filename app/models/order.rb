@@ -2,8 +2,6 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_items, dependent: :destroy
 
-
-
   def total_praice
     order_items.to_a.sum { |item| item.tatal_price }
   end
