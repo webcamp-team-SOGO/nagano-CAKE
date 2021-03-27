@@ -18,6 +18,11 @@
 ![アプリケーション詳細設計書](https://user-images.githubusercontent.com/78068219/112710690-762a6e00-8f06-11eb-8d63-3a6c1833ce84.png)
 
 # 画面遷移図
+- 管理者側
+<img width="952" alt="画面遷移図_a" src="https://user-images.githubusercontent.com/78068219/112711404-78db9200-8f0b-11eb-840b-cebdae61cd09.png">
+
+- 会員側(顧客)
+<img width="983" alt="画面遷移図_c" src="https://user-images.githubusercontent.com/78068219/112711409-8264fa00-8f0b-11eb-8f73-de9278c0612d.png">
 
 # 実装機能
 - 管理者側
@@ -48,3 +53,16 @@
   - font-awesome-sass  
   - rails-i18n  
 　
+ # 開発者
+
+## チーム名
+**Team SOGO**
+
+## メンバー
+・岡倉亮太(おか)
+
+・五島翔生(ごっさん)
+
+・大橋直稀(なおき)
+
+・志丸僚(まる)
