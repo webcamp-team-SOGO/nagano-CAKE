@@ -29,7 +29,7 @@ class Public::OrdersController < ApplicationController
         @order.name = @address.name
       end
     elsif params[:order][:address_option] == "2"
-      
+
       @order = Order.new(order_params)
       if @order.postal_code.blank? || @order.address.blank? || @order.name.blank?
         @customer = current_customer
@@ -43,6 +43,9 @@ class Public::OrdersController < ApplicationController
     @order_item = OrderItem.new
     @customer = current_customer
     @cart_items = @customer.cart_items
+    if @cart_items.blank?
+      redirect_to root_path
+    end
 
     array = []
     @cart_items.all.each do |cart_item|

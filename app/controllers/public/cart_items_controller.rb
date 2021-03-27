@@ -8,6 +8,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
+    @cart_item = current_customer.cart_items.build(item_id: params[:item_id], number: params[:number].to_i)
       if @cart_item.number == 0
         redirect_to request.referer
       else
