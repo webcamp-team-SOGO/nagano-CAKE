@@ -20,13 +20,24 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
-      @address = Delivery.find(params[:order][:delivery_id])
-      @order.address = @address.address
-      @order.postal_code = @address.postal_code
-      @order.name = @address.name
+      @address = Delivery.find_by(id: params[:order][:delivery_id])
+      if @address.blank?
+        redirect_to new_order_path
+      else
+        @order.address = @address.address
+        @order.postal_code = @address.postal_code
+        @order.name = @address.name
+      end
     elsif params[:order][:address_option] == "2"
       
       @order = Order.new(order_params)
+      if @order.postal_code.blank? || @order.address.blank? || @order.name.blank?
+        @customer = current_customer
+        @deliveries = Delivery.where(customer: current_customer)
+        render action: :new
+      else
+        @order = Order.new(order_params)
+      end
     end
 
     @order_item = OrderItem.new
