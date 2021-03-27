@@ -24,7 +24,7 @@ class Public::CartItemsController < ApplicationController
         end
         @cart_item.save
         redirect_to cart_items_path
-        
+
       end
 
   end
