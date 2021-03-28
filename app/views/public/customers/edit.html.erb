@@ -1,8 +1,8 @@
 <h4 class="c-edit"><span class="my-edit">会員情報編集</span></h4>
 
-<div class="container main-edit">
-  <div class="row ml-5">
-    <%= render 'layouts/errors', obj: @customer %>
+<div class="container main-edit pl-5">
+  <%= render 'layouts/errors', obj: @customer %>
+  <div class="row">
 
     <%= form_with model: @customer, local:true do |f| %>
       <table class="table table-borderless">

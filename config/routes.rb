@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root to:  'homes#top'
+  get 'order/confirm' => 'homes#top'
   get '/about' => 'homes#about'
 
   devise_for :admins, controllers: {
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :index, :create, :show]
     resources :deliveries, only: [:index, :create, :update, :destroy, :edit]
 
-    post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
+    post 'order/confirm' => 'orders#confirm', as: 'orders_confirm'
     get 'order/thanks' => 'orders#thanks', as: 'order_thanks'
     get 'confirm/:id' => 'customers#confirm', as: 'confirm_confirm'
     patch 'withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
