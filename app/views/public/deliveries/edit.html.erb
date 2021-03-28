@@ -1,2 +1,33 @@
-<h1>Public::Deliveries#edit</h1>
-<p>Find me in app/views/public/deliveries/edit.html.erb</p>
+<h4 class="mypage-title"><span class="mypage">配送先編集</span></h4>
+
+<div class="container delivery-edit">
+  <%= render 'layouts/errors', obj: @delivery %>
+  <div class="row">
+
+
+
+    <%= form_with model: @delivery, url: delivery_path, local:true do |f| %>
+
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>郵便番号（ハイフンなし）</td>
+            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address, autocomplete: "address", size: "60" %></td>
+          </tr>
+          <tr>
+            <td>宛名</td>
+            <td><%= f.text_field :name, autocomplete: "name" %></td>
+            <td><%= f.submit '変更内容を保存', class:"btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+
+  </div>
+</div>
+
+

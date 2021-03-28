@@ -1,2 +1,52 @@
-<h1>Admins::Items#new</h1>
-<p>Find me in app/views/admins/items/new.html.erb</p>
+<h4 class="new-title"><span class="new">商品新規登録</span></h4>
+<div class='row'>
+  <div class="col-md-8 offset-md-4">
+    <%= render 'layouts/errors', obj: @item %>
+    <%= form_with model: @item, url: admins_items_path, method: :post, local:true do |f| %>
+    <div class="form-inline">
+      <div class="col-sm-2">商品画像</div>
+      <div class="col-sm-8">
+        <%= f.file_field :image %>
+      </div>
+    </div><br>
+    <div class="form-inline">
+      <div class="col-sm-2">商品名</div>
+      <div class="col-sm-8">
+        <%= f.text_field :name, :placeholder => "商品名" %>
+      </div>
+    </div><br>
+    <div class="form-inline">
+      <div class="col-sm-2">商品説明</div>
+      <div class="col-sm-8">
+        <%= f.text_area :introduction, :placeholder => "ここに説明文を記述します" %>
+      </div>
+    </div><br>
+    <div class="form-inline">
+      <div class="col-sm-2">ジャンル</div>
+      <div class="col-sm-8">
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name,  {prompt: "--選択してください--"}) %>
+      </div>
+    </div><br>
+    <div class="form-inline">
+      <div class="col-sm-2">税抜価格</div>
+      <div class="col-sm-8">
+        <%= f.text_field :taxfree, :placeholder => "1000" %>円
+      </div>
+    </div><br>
+    <div class="form-inline">
+      <div class="col-sm-2">販売ステータス</div>
+      <div class="col-sm-8">
+        <%= f.radio_button :is_valid, 'true' %>
+        <%= f.label :is_valid, "販売中", {value: true, style: "display: inline-block;", class: "mr-3"} %>
+        <%= f.radio_button :is_valid, 'false' %>
+        <%= f.label :is_valid, "販売停止中", {value: false, style: "display: inline-block;"} %>
+      </div>
+    </div><br>
+  </div>
+</div>
+<div class='col-12'>
+  <div class="text-center">
+    <%= f.submit '新規登録', class: 'btn btn-success px-4' %>
+  </div>
+  <% end %>
+</div>

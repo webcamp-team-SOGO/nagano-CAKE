@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.main {
+     background-image: image-url('img2/sample4-min.JPG');
+     background-size:cover;
+     background-position: center center;
+     height:400px;
+}
+
+.back{
+      height: 100%;
+}
+
+.maru {
+    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+    width: 150px;  /* 縦横を同じ値にする */
+    height: 150px;  /* 縦横を同じ値にする */
+    border: solid 2px #fffff0;     /* 枠線指定 */
+    object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
+
+}
