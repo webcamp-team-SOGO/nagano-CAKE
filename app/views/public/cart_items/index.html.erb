@@ -11,20 +11,25 @@
     <table class="table table-bordered">
       <thead>
         <tr bgcolor="#EEEEEE">
-          <th class="border border-dark">商品名</th>
-          <th class="border border-dark" width="170">単価（税込）</th>
-          <th class="border border-dark">数量</th>
-          <th class="border border-dark">小計</th>
-          <th class="border border-dark"></th>
+          <th class="border border-dark" width='40%'>商品名</th>
+          <th class="border border-dark" width="14%">単価（税込）</th>
+          <th class="border border-dark" width="18%">数量</th>
+          <th class="border border-dark" width="14%">小計</th>
+          <th class="border border-dark" width="14%"></th>
         </tr>
       </thead>
       <tbody>
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td class="border border-dark">
-            <div class="image">
-              <%= attachment_image_tag(cart_item.item, :image, fallback: "img/no_image.jpg", size: "70x50") %><p class="align-middle"><%= cart_item.item.name %></p>
+            <div>
+              <div class="itembox mr-5">
+                <%= attachment_image_tag(cart_item.item, :image, fallback: "img/no_image.jpg", size: "70x50") %>
+              </div>
+              <div class="p-2"><%= cart_item.item.name %></div>
             </div>
+            
+            
           </td>
           <td class="border border-dark align-middle"><%= (cart_item.item.taxfree * 1.1).round.to_s(:delimited) %></td>
           <td class="border border-dark align-middle">
@@ -37,7 +42,7 @@
           <td class="border border-dark align-middle"><%= ((cart_item.item.taxfree * 1.1 ) * cart_item.number).round.to_s(:delimited) %></td>
           <td class="border border-dark align-middle">
             <%= form_with url: cart_item_path(cart_item), method: :delete, local: true do |f| %>
-              <%= f.submit "削除する", class: "button" %>
+              <%= f.submit "削除する", class: "button ml-4" %>
               <%= f.hidden_field :item_id, value: cart_item.item_id %>
             <% end %>
           </td>
