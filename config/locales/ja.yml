@@ -22,7 +22,7 @@ ja:
       genre:
         name: ジャンル名
       item:
-        genre_id: ジャンル
+        genre: ジャンル
         name: 商品名
         introduction: 商品説明
         taxfree: 税抜価格
