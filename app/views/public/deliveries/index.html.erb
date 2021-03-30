@@ -7,25 +7,25 @@
 
 <div class="row wrapper">
   <div class="col-md-9" >
-    <%= form_with model:@delivery, local: true do |f| %>
+    <%= form_with model:@delivery, local: false do |f| %>
       <table class='table table-borderless table-sm'>
         <tr>
           <th width="36%">
             <p>郵便番号（ハイフンなし）</p>
           </th>
-          <td width="60%"><%= f.text_field :postal_code, autofocus: true, placeholder:"0000000" %></td>
+          <td width="60%"><%= f.text_field :postal_code, autofocus: true, placeholder:"0000000", class:'text' %></td>
         </tr>
         <tr>
           <th>
             <p>住所</p>
           </th>
-          <td><%= f.text_field :address, autofocus: true, placeholder:"東京都渋⾕区代々⽊神園町0-0", style: "width: 100%;" %></td>
+          <td><%= f.text_field :address, autofocus: true, placeholder:"東京都渋⾕区代々⽊神園町0-0", style: "width: 100%;", class:'text' %></td>
         </tr>
         <tr>
           <th>
             <p>宛名</p>
           </th>
-          <td><%= f.text_field :name, autofocus: true, placeholder:"令和道⼦" %></td>
+          <td><%= f.text_field :name, autofocus: true, placeholder:"令和道⼦", class:'text' %></td>
           <td><%= f.submit "新規登録", class: "btn btn-success px-4" %></td>
         </tr>
       </table>
@@ -45,19 +45,11 @@
           <th class="border border-dark"></th>
         </tr>
       </thead>
-      <tbody>
-      <% @deliveries.each do |delivery| %>
-        <tr>
-          <td class="border border-dark"><%= delivery.postal_code %></td>
-          <td class="border border-dark"><%= delivery.address %></td>
-          <td class="border border-dark"><%= delivery.name %></td>
-          <td class="border border-dark mr-3">
-            <%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success form mr-3" %>
-            <%= link_to "削除する", delivery_path(delivery.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に消しますか？" %>
-          </td>
-        </tr>
-      <% end %>
+
+      <tbody class="deliveries">
+        <%= render 'deliveries', deliveries: @deliveries %>
       </tbody>
+
     </table>
   </div>
 </div>

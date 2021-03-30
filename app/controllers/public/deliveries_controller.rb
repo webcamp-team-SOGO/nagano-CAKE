@@ -8,10 +8,10 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def create
+    @deliveries = current_customer.deliveries
     @delivery = Delivery.new(delivery_params)
     @delivery.customer_id = current_customer.id
     if @delivery.save
-      redirect_to deliveries_path
     else
       @deliveries = current_customer.deliveries
       render :index
@@ -19,9 +19,9 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def destroy
+    @deliveries = current_customer.deliveries
     @delivery = Delivery.find(params[:id])
     @delivery.destroy
-    redirect_to deliveries_path
   end
 
   def edit

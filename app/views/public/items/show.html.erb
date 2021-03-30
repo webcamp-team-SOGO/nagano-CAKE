@@ -19,7 +19,7 @@
         <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
         <%= f.select :number, options_for_select((1..100).to_a), include_blank: "個数選択" %>
         <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.submit "カートに入れる", class: "btn btn-success shadow"%>
+        <%= f.submit "カートに入れる", class: "btn btn-success shadow" %>
         <% end %>
       <% elsif @item.is_valid == true && customer_signed_in? == false %>
         <div><%= "会員登録後にご購入頂けます" %></div>

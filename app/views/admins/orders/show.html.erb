@@ -29,7 +29,11 @@
             <td><strong>注文ステータス</strong></td>
             <td>
               <%= form_with model: @order, url: admins_order_path(@order), local: true do |f| %>
-              <%= f.select :status, Order.statuses.keys.to_a, {}, class: "mr-3"%>
+              <% if @order.発送準備中? || @order.発送済み? %>
+              <%= f.select :status, Order.statuses.keys %>
+              <% else %>
+              <%= f.select :status, Order.statuses.keys, {disabled: ["発送準備中","発送済み"]}%>
+              <% end %>
               <%= f.submit "更新", class: 'btn btn-success' %>
             </td>
             <% end %>
@@ -51,16 +55,19 @@
       </thead>
       <tbody>
         <% @order_items.each do |order_item| %>
-        <%= form_with model: order_item, url: admins_order_item_path(order_item), local: true do |f| %>
         <tr>
           <td><%= order_item.item.name %></td>
           <td><%= converting_to_jpy(order_item.price) %></td>
           <td><%= order_item.number %></td>
           <td><%= converting_to_jpy(order_item.price * order_item.number) %></td>
-          <td><%= f.select :making_status, OrderItem.making_statuses.keys.to_a, {}%></td>
-          <td><%= f.submit "更新", class: 'btn btn-success'%></td>
+          <td>
+          <%= form_with model: order_item, url: admins_order_item_path, local: true do |f| %>
+          <%= f.hidden_field :order_item_id, :value => order_item.id %>
+          <%= f.select :making_status, OrderItem.making_statuses.keys %>
+          <%= f.submit "更新", class: 'btn btn-success'%>
+          <% end %>
+          </td>
         </tr>
-        <% end %>
         <% end %>
       </tbody>
     </table>

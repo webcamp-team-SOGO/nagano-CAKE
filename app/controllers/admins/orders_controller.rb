@@ -21,7 +21,11 @@ before_action :authenticate_admin!
 
   def update
     @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: @order)
     if @order.update(order_params)
+        if @order.status.include?("入金確認")
+           @order_items.update( production_status: 1)
+        end
      redirect_to request.referer, notice: "注文ステータスを更新しました"
     else
      @order = Order.find(params[:id])

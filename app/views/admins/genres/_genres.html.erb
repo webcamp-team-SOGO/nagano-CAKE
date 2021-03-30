@@ -1,0 +1,19 @@
+
+    <div class="col-5">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th style="width: 60%;" class="pl-5">ジャンル</th>
+              <th style="width: 40%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% genres.each do |genre| %>
+              <tr>
+                <td><%= genre.name %></td>
+                <td><%= link_to "編集する", edit_admins_genre_path(genre), class: "btn btn-success" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
